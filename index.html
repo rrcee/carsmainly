@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Cars Mainly - Premium Hot Wheels Showroom</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,6 +41,7 @@
             /* Subtle background texture using gradients */
             background-image: radial-gradient(circle at 10% 20%, rgba(255, 242, 0, 0.1) 0%, transparent 20%),
                               radial-gradient(circle at 90% 80%, rgba(0, 154, 78, 0.1) 0%, transparent 20%);
+            -webkit-text-size-adjust: 100%; /* Prevent iOS font scaling */
         }
         .container {
             width: 90%;
@@ -185,8 +186,10 @@
             border: 1px solid var(--glass-border);
             background: var(--accent-green);
             color: var(--accent-white);
+            touch-action: manipulation; /* Improve touch response */
         }
-        .btn:hover {
+        .btn:hover,
+        .btn:active {
             transform: translateY(-3px);
             box-shadow: var(--shadow-hover);
             background: #008040;
@@ -203,12 +206,15 @@
             margin: 0 auto;
             overflow: hidden;
             padding: 20px 0;
+            display: flex;
+            justify-content: center; /* Center the entire carousel */
         }
         .products-carousel {
             display: flex;
             transition: transform 0.5s ease-in-out;
             gap: 30px;
             padding: 0 15px;
+            justify-content: flex-start; /* Align cards left within carousel, but container centers */
         }
         .product-card {
             min-width: calc((100% / 3) - 20px);
@@ -222,11 +228,15 @@
             flex-shrink: 0;
             display: flex;
             flex-direction: column;
+            transform: scale(1);
+            touch-action: manipulation; /* Prevent double-tap zoom */
         }
-        .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-hover), var(--glow);
-            border-color: var(--accent-green);
+        .product-card:hover,
+        .product-card:active {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: var(--shadow-hover); /* Remove glow, keep shadow for lift */
+            /* No border color change or glow */
+            z-index: 10; /* Ensure it layers above others during zoom */
         }
        
         /* FIX: Ensure consistent card height on PC */
@@ -244,6 +254,7 @@
             max-height: 100%;
             object-fit: contain;
             display: block;
+            transition: var(--transition); /* Smooth image zoom if needed */
         }
         .products-carousel-nav {
             display: none; /* Hide navigation buttons entirely */
@@ -317,9 +328,16 @@
             .product-card .image-container {
                 height: 220px; /* Adjust height for tablets */
             }
+            .hero-buttons {
+                gap: 15px;
+            }
         }
         @media (max-width: 576px) {
-            /* CRITICAL MOBILE OPTIMIZATION */
+            /* ENHANCED MOBILE OPTIMIZATIONS */
+            body {
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
            
             .products, .themed-section {
                 padding: 60px 0;
@@ -346,17 +364,20 @@
             .btn {
                 width: 100%;
                 max-width: 300px;
-                padding: 12px 25px;
+                padding: 16px 24px; /* Larger touch targets */
                 font-size: 1rem;
+                min-height: 48px; /* Minimum touch size */
             }
            
-            /* Single card display on mobile */
+            /* Single card display on mobile, fully centered */
             .product-card {
-                min-width: 100%;
+                min-width: 95%; /* Slightly less than 100% for padding */
+                margin: 0 auto; /* Center the card */
                 gap: 0;
             }
             .products-carousel {
                 gap: 0;
+                justify-content: center; /* Center cards in carousel on mobile */
             }
             /* Fixed image container for mobile to prevent stretching */
             .product-card .image-container {
@@ -371,7 +392,15 @@
                 max-width: none;
             }
             .product-info {
-                padding: 10px;
+                padding: 12px; /* Slightly more padding for readability */
+                font-size: 0.95rem; /* Adjust text for mobile */
+            }
+            /* Disable zoom/lift on mobile hover (no mouse) */
+            .product-card:hover,
+            .product-card:active {
+                transform: none;
+                scale: 1;
+                box-shadow: var(--glass-shadow); /* Reset to base shadow */
             }
             /* Shrink and reposition carousel navigation - but hidden anyway */
             .products-carousel-nav {
@@ -393,6 +422,33 @@
                 flex-direction: column;
                 text-align: center;
                 gap: 15px;
+            }
+            .shipping-notice i {
+                font-size: 2.5rem; /* Slightly smaller icon on mobile */
+            }
+            /* Improve footer on mobile */
+            footer .footer-content {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            footer .footer-links {
+                order: 3;
+            }
+            .social-icons {
+                order: 2;
+            }
+        }
+        /* Extra small screens */
+        @media (max-width: 360px) {
+            .container {
+                padding: 0 10px;
+            }
+            .product-card .image-container {
+                height: 180px;
+            }
+            .btn {
+                padding: 14px 20px;
             }
         }
     </style>
@@ -586,10 +642,21 @@
             if (window.innerWidth > 768) {
                 window.addEventListener('scroll', handleParallax);
             }
+
+            // Prevent double-tap zoom on mobile
+            let lastTouchEnd = 0;
+            document.addEventListener('touchend', function (event) {
+                const now = (new Date()).getTime();
+                if (now - lastTouchEnd <= 300) {
+                    event.preventDefault();
+                }
+                lastTouchEnd = now;
+            }, false);
         });
         let productsCurrentIndex = 0;
         let productsCarousel = null;
         let productCards = [];
+        let realProductCount = 0;
         let autoSlideInterval;
         const cardGap = 30;
         const autoSlideDelay = 3000; // 3 seconds
@@ -617,6 +684,7 @@
             const productsContainer = document.getElementById('productsContainer');
             if (productsContainer) {
                 productsContainer.innerHTML = '';
+                // Add original products
                 products.forEach(product => {
                     const productCard = document.createElement('div');
                     productCard.className = 'product-card tilt-effect';
@@ -636,11 +704,31 @@
                     productsContainer.appendChild(productCard);
                 });
                
+                realProductCount = products.length;
+                setupInfiniteCarousel();
                 initProductsCarousel();
                 initTiltEffect();
                 initAutoSlide(); // Start auto-slide after init
             }
         }
+
+        function setupInfiniteCarousel() {
+            const productsContainer = document.getElementById('productsContainer');
+            const { visibleCards } = calculateCardMetrics();
+            // Prepend clones of last visibleCards items
+            for (let i = 0; i < visibleCards; i++) {
+                const lastCard = productsContainer.children[realProductCount - 1 - i].cloneNode(true);
+                productsContainer.insertBefore(lastCard, productsContainer.firstChild);
+            }
+            // Append clones of first visibleCards items
+            for (let i = 0; i < visibleCards; i++) {
+                const firstCard = productsContainer.children[visibleCards + i].cloneNode(true); // After prepend, originals start at visibleCards
+                productsContainer.appendChild(firstCard);
+            }
+            // Start at the beginning of originals (after prepend clones)
+            productsCurrentIndex = visibleCards;
+        }
+       
         function initProductsCarousel() {
             productsCarousel = document.getElementById('productsContainer');
             productCards = Array.from(document.querySelectorAll('.product-card'));
@@ -664,24 +752,30 @@
             const totalScrollWidth = cardWidth + cardGap;
             return { totalScrollWidth, visibleCards };
         }
-        function updateProductsCarousel() {
+        function updateProductsCarousel(animate = true) {
             if (productCards.length === 0 || !productsCarousel) return;
-            const { totalScrollWidth, visibleCards } = calculateCardMetrics();
-            const maxIndex = Math.max(0, productCards.length - visibleCards);
+            const { totalScrollWidth } = calculateCardMetrics();
            
-            productsCurrentIndex = Math.min(Math.max(0, productsCurrentIndex), maxIndex);
+            // For infinite, don't clamp index - handle reset in slide function
+            productsCarousel.style.transition = animate ? 'transform 0.5s ease-in-out' : 'none';
             productsCarousel.style.transform = `translateX(-${productsCurrentIndex * totalScrollWidth}px)`;
         }
        
         function handleNextClick() {
             const { visibleCards } = calculateCardMetrics();
-            const maxIndex = Math.max(0, productCards.length - visibleCards);
+            const totalSlides = realProductCount;
            
             productsCurrentIndex = productsCurrentIndex + 1;
-            if (productsCurrentIndex > maxIndex) {
-                productsCurrentIndex = 0; // Loop back to start for auto-slide
+            updateProductsCarousel(true);
+           
+            // Reset position when reaching the end of originals (before appended clones)
+            if (productsCurrentIndex >= totalSlides + visibleCards) {
+                // Wait for animation to finish, then jump back without transition
+                setTimeout(() => {
+                    productsCurrentIndex = visibleCards;
+                    updateProductsCarousel(false);
+                }, 500); // Match transition duration
             }
-            updateProductsCarousel();
         }
        
         // --- Auto-Slide Logic ---
