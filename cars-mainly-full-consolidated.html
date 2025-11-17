@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cars Mainly - Premium Hot Wheels Showroom</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;700&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* styles.css */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --ferrari-red: #D40000;
+            --primary-yellow: #FFF200;
+            --primary-black: #000000;
+            --accent-green: #00A651;
+            --accent-white: #FFFFFF;
+            --accent-red: #FF2800;
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            --transition: all 0.3s ease;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.3);
+            --glow: 0 0 20px rgba(212, 0, 0, 0.5);
+        }
+
+        body {
+            font-family: 'Inter', 'Poppins', sans-serif;
+            background-color: var(--ferrari-red);
+            color: var(--primary-black);
+            overflow-x: hidden;
+            line-height: 1.6;
+            background-image: radial-gradient(circle at 10% 20%, rgba(255, 242, 0, 0.1) 0%, transparent 20%),
+                              radial-gradient(circle at 90% 80%, rgba(0, 166, 81, 0.1) 0%, transparent 20%);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 20px 0;
+            transition: var(--transition);
+            border-bottom: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+        }
+
+        header.scrolled {
+            padding: 15px 0;
+            box-shadow: var(--shadow-hover);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-family: 'Anton', sans-serif;
+            font-size: 2rem;
+            font-weight: 400;
+            color: var(--primary-black);
+            letter-spacing: 2px;
+            position: relative;
+            text-shadow: 
+                -2px -2px 0 var(--accent-green),
+                2px -2px 0 var(--accent-white),
+                -2px 2px 0 var(--accent-red),
+                2px 2px 0 var(--primary-black);
+            animation: racingOutline 3s linear infinite;
+        }
+
+        @keyframes racingOutline {
+            0% {
+                text-shadow: 
+                    -2px -2px 0 var(--accent-green),
+                    2px -2px 0 var(--accent-white),
+                    -2px 2px 0 var(--accent-red),
+                    2px 2px 0 var(--primary-black);
+            }
+            25% {
+                text-shadow: 
+                    -2px -2px 0 var(--accent-white),
+                    2px -2px 0 var(--accent-red),
+                    -2px 2px 0 var(--primary-black),
+                    2px 2px 0 var(--accent-green);
+            }
+            50% {
+                text-shadow: 
+                    -2px -2px 0 var(--accent-red),
+                    2px -2px 0 var(--primary-black),
+                    -2px 2px 0 var(--accent-green),
+                    2px 2px 0 var(--accent-white);
+            }
+            75% {
+                text-shadow: 
+                    -2px -2px 0 var(--primary-black),
+                    2px -2px 0 var(--accent-green),
+                    -2px 2px 0 var(--accent-white),
+                    2px 2px 0 var(--accent-red);
+            }
+            100% {
+                text-shadow: 
+                    -2px -2px 0 var(--accent-green),
+                    2px -2px 0 var(--accent-white),
+                    -2px 2px 0 var(--accent-red),
+                    2px 2px 0 var(--primary-black);
+            }
+        }
+
+        .nav-menu ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu ul li {
+            margin-left: 30px;
+        }
+
+        .nav-menu ul li a {
+            color: var(--primary-black);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            position: relative;
+            font-family: 'Inter', 'Poppins', sans-serif;
+        }
+
+        .nav-menu ul li a:hover,
+        .nav-menu ul li a.active {
+            color: var(--accent-green);
+        }
+
+        .nav-menu ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--accent-green);
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .nav-menu ul li a:hover::after,
+        .nav-menu ul li a.active::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-black);
+            margin: 3px 0;
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--primary-yellow) 0%, #f9e700 100%);
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .metallic-logo h1 {
+            font-family: 'Anton', sans-serif;
+            font-size: 5rem;
+            font-weight: 400;
+            color: var(--primary-black);
+            margin-bottom: 20px;
+            position: relative;
+            text-shadow: 
+                -3px -3px 0 var(--accent-green),
+                3px -3px 0 var(--accent-white),
+                -3px 3px 0 var(--accent-red),
+                3px 3px 0 var(--primary-black);
+            animation: racingOutline 3s linear infinite;
+            transform: perspective(500px) rotateY(5deg);
+            transition: all 0.3s ease;
+        }
+
+        .metallic-logo h1:hover {
+            transform: perspective(500px) rotateY(0deg) scale(1.05);
+            text-shadow: 
+                -4px -4px 0 var(--accent-green),
+                4px -4px 0 var(--accent-white),
+                -4px 4px 0 var(--accent-red),
+                4px 4px 0 var(--primary-black);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .animated-text h2 {
+            font-family: 'Anton', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 15px;
+            opacity: 0;
+            animation: fadeInUp 1s forwards 0.5s;
+            color: var(--primary-black);
+        }
+
+        .animated-text p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeInUp 1s forwards 0.8s;
+            font-family: 'Inter', 'Poppins', sans-serif;
+            color: var(--primary-black);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            opacity: 0;
+            animation: fadeInUp 1s forwards 1.1s;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            box-shadow: var(--glass-shadow);
+            border: 1px solid var(--glass-border);
+            cursor: pointer;
+            font-family: 'Inter', 'Poppins', sans-serif;
+            background: var(--accent-red);
+            color: var(--accent-white);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            color: var(--accent-white);
+            background: #e02400;
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background: radial-gradient(circle at center, transparent 40%, rgba(0, 0, 0, 0.1) 100%);
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-family: 'Anton', sans-serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            color: var(--primary-black);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--primary-yellow);
+            border-radius: 2px;
+        }
+
+        /* Products Carousel Section */
+        .products {
+            padding: 100px 0;
+            background: var(--accent-white);
+            position: relative;
+        }
+
+        .products-carousel-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+            padding: 20px 0;
+        }
+
+        .products-carousel {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card {
+            min-width: 300px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--glass-shadow);
+            transition: var(--transition);
+            position: relative;
+            margin: 0 15px;
+            border: 1px solid var(--glass-border);
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent-green);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+            max-height: 300px;
+            object-fit: contain;
+            display: block;
+            aspect-ratio: 9/16;
+        }
+
+        .product-card h3 {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.5rem;
+            padding: 20px 20px 5px;
+            color: var(--primary-black);
+        }
+
+        .product-card p {
+            padding: 0 20px 20px;
+            color: var(--primary-black);
+            font-family: 'Inter', 'Poppins', sans-serif;
+        }
+
+        .products-carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            color: var(--accent-white);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 10;
+            box-shadow: var(--shadow);
+        }
+
+        .products-carousel-nav:hover {
+            background: var(--primary-black);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .products-carousel-nav:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+
+        .products-carousel-nav.prev {
+            left: 20px;
+        }
+
+        .products-carousel-nav.next {
+            right: 20px;
+        }
+
+        /* Image Container for Proper Aspect Ratio */
+        .image-container {
+            width: 100%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* Shipping Notice */
+        .shipping-notice {
+            padding: 50px 0;
+            background: linear-gradient(135deg, var(--primary-yellow) 0%, #f9e700 100%);
+            border-top: 3px solid var(--primary-black);
+            border-bottom: 3px solid var(--primary-black);
+            position: relative;
+        }
+
+        .notice-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .notice-content i {
+            font-size: 3rem;
+            color: var(--primary-black);
+        }
+
+        .notice-content h3 {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--primary-black);
+        }
+
+        .notice-content p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            font-family: 'Inter', 'Poppins', sans-serif;
+            color: var(--primary-black);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-black);
+            padding: 50px 0 20px;
+            border-top: 3px solid var(--primary-yellow);
+            color: var(--accent-white);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo h2 {
+            font-family: 'Anton', sans-serif;
+            font-size: 2rem;
+            color: var(--primary-yellow);
+            margin-bottom: 10px;
+        }
+
+        .footer-logo p {
+            color: var(--accent-white);
+            font-family: 'Inter', 'Poppins', sans-serif;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: var(--accent-white);
+            text-decoration: none;
+            transition: var(--transition);
+            font-family: 'Inter', 'Poppins', sans-serif;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-yellow);
+            text-decoration: underline;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary-yellow);
+            color: var(--primary-black);
+            font-size: 1.2rem;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .social-icons a:hover {
+            background: var(--accent-green);
+            color: var(--accent-white);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .social-icons a:active {
+            transform: translateY(0);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.7);
+            font-family: 'Inter', 'Poppins', sans-serif;
+        }
+
+        /* Tilt Effect */
+        .tilt-effect {
+            perspective: 1000px;
+        }
+
+        .tilt-effect:hover {
+            transform: rotateY(5deg) rotateX(5deg);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .metallic-logo h1 {
+                font-size: 4rem;
+            }
+            
+            .animated-text h2 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                width: 80%;
+                height: calc(100vh - 80px);
+                background: var(--glass-bg);
+                backdrop-filter: blur(15px);
+                -webkit-backdrop-filter: blur(15px);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 50px;
+                transition: var(--transition);
+                box-shadow: var(--glass-shadow);
+                border-left: 1px solid var(--glass-border);
+                border-top: 1px solid var(--glass-border);
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .nav-menu ul {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .nav-menu ul li {
+                margin: 15px 0;
+                text-align: center;
+            }
+            
+            .metallic-logo h1 {
+                font-size: 3rem;
+            }
+            
+            .animated-text h2 {
+                font-size: 1.8rem;
+            }
+            
+            .animated-text p {
+                font-size: 1.1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .metallic-logo h1 {
+                font-size: 2.5rem;
+            }
+            
+            .animated-text h2 {
+                font-size: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .notice-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .product-card {
+                min-width: 250px;
+            }
+        }
+
+        /* About Page Styles */
+        .about-content {
+            padding: 50px 0;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .about-card {
+            background: var(--accent-white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border: 2px solid var(--primary-black);
+        }
+
+        .values-section {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(45deg, rgba(255, 242, 0, 0.2), rgba(0, 166, 81, 0.2));
+            border-radius: 15px;
+            margin: 50px 0;
+            border: 2px solid var(--primary-black);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .value-item {
+            margin-bottom: 20px;
+        }
+
+        .value-item i {
+            font-size: 2.5rem;
+            color: var(--primary-yellow);
+            margin-bottom: 15px;
+        }
+
+        .value-item h4 {
+            font-family: 'Anton', sans-serif;
+            margin-bottom: 10px;
+        }
+
+        /* Contact Page Styles */
+        .contact-method {
+            transform-style: preserve-3d;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .contact-method:hover {
+            transform: translateZ(20px) rotateX(5deg);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+        
+        .contact-method i {
+            transform: translateZ(30px);
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-method:hover i {
+            transform: translateZ(40px) scale(1.1);
+        }
+        
+        .shipping-info {
+            transform-style: preserve-3d;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            transform: perspective(1000px);
+        }
+        
+        .shipping-info:hover {
+            transform: perspective(1000px) translateZ(30px) rotateX(3deg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .shipping-info i {
+            transform: translateZ(20px);
+            transition: transform 0.3s ease;
+        }
+        
+        .shipping-info:hover i {
+            transform: translateZ(30px) scale(1.2);
+        }
+        
+        .section-title {
+            transform: perspective(1000px) rotateX(10deg);
+            transition: transform 0.3s ease;
+        }
+        
+        .section-title:hover {
+            transform: perspective(1000px) rotateX(0deg) translateZ(20px);
+        }
+        
+        .metallic-logo h1 {
+            transform: perspective(1000px) rotateY(5deg);
+            transition: transform 0.3s ease;
+        }
+        
+        .metallic-logo h1:hover {
+            transform: perspective(1000px) rotateY(0deg) translateZ(30px);
+        }
+
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: var(--glass-bg);
+            border-radius: 10px;
+            transition: var(--transition);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>CARS MAINLY</h1>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="metallic-logo">
+                <h1>CARS MAINLY</h1>
+            </div>
+            <div class="animated-text">
+                <h2>Premium Hot Wheels Collection</h2>
+                <p>Experience the thrill of speed and precision</p>
+            </div>
+            <div class="hero-buttons">
+                <a href="https://www.instagram.com/carsmainly?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="btn"><i class="fab fa-instagram"></i> Check Live Stock</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScnc27rN3eldGOX53XWCs8aPOtrRoOGgNQKL2i4i18ElPrdjQ/viewform?usp=header" target="_blank" class="btn"><i class="fas fa-shopping-cart"></i> Order Now</a>
+            </div>
+        </div>
+        <div class="hero-overlay"></div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="container">
+            <h2 class="section-title">Hot Wheels Collection</h2>
+            <div class="products-carousel-container">
+                <div class="products-carousel" id="productsContainer">
+                    <!-- Products will be dynamically loaded here -->
+                </div>
+                <button class="products-carousel-nav prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="products-carousel-nav next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shipping Notice -->
+    <section class="shipping-notice">
+        <div class="container">
+            <div class="notice-content">
+                <i class="fas fa-truck"></i>
+                <div>
+                    <h3>India-Wide Delivery</h3>
+                    <p>Shipping charges vary by location. Fast and reliable delivery across India.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="products" style="padding-top: 50px;">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="section-title">Our Story</h2>
+                <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 30px; text-align: center; max-width: 800px; margin: 0 auto 40px; font-family: 'Inter', 'Poppins', sans-serif;">
+                    Founded with a passion for precision engineering and automotive excellence, Cars Mainly has become the premier destination for Hot Wheels enthusiasts in India. Our journey began with a simple vision: to bring the thrill of collecting and playing with premium die-cast vehicles to fans across the nation.
+                </p>
+                
+                <div class="about-grid">
+                    <div class="about-card">
+                        <h3 style="font-family: 'Anton', sans-serif; color: var(--primary-black); margin-bottom: 20px; font-size: 1.8rem;">Our Mission</h3>
+                        <p style="font-family: 'Inter', 'Poppins', sans-serif;">To provide collectors and enthusiasts with authentic, high-quality Hot Wheels products while fostering a community that celebrates automotive culture and craftsmanship.</p>
+                    </div>
+                    
+                    <div class="about-card">
+                        <h3 style="font-family: 'Anton', sans-serif; color: var(--primary-black); margin-bottom: 20px; font-size: 1.8rem;">Quality Assurance</h3>
+                        <p style="font-family: 'Inter', 'Poppins', sans-serif;">Every product in our collection undergoes rigorous quality checks to ensure authenticity and premium craftsmanship that meets the standards of discerning collectors.</p>
+                    </div>
+                    
+                    <div class="about-card">
+                        <h3 style="font-family: 'Anton', sans-serif; color: var(--primary-black); margin-bottom: 20px; font-size: 1.8rem;">Community Focus</h3>
+                        <p style="font-family: 'Inter', 'Poppins', sans-serif;">We're more than just a retailer - we're building a vibrant community of Hot Wheels enthusiasts through events, collaborations, and shared experiences.</p>
+                    </div>
+                </div>
+                
+                <div class="values-section">
+                    <h3 style="font-family: 'Anton', sans-serif; font-size: 2rem; margin-bottom: 30px; color: var(--primary-black);">Core Values</h3>
+                    <div class="values-grid">
+                        <div class="value-item">
+                            <i class="fas fa-star"></i>
+                            <h4 style="font-family: 'Anton', sans-serif; margin-bottom: 10px;">Excellence</h4>
+                            <p style="font-family: 'Inter', 'Poppins', sans-serif;">Uncompromising quality in every product</p>
+                        </div>
+                        <div class="value-item">
+                            <i class="fas fa-heart" style="font-size: 2.5rem; color: var(--accent-green); margin-bottom: 15px;"></i>
+                            <h4 style="font-family: 'Anton', sans-serif; margin-bottom: 10px;">Passion</h4>
+                            <p style="font-family: 'Inter', 'Poppins', sans-serif;">Dedication to automotive culture</p>
+                        </div>
+                        <div class="value-item">
+                            <i class="fas fa-users" style="font-size: 2.5rem; color: var(--primary-black); margin-bottom: 15px;"></i>
+                            <h4 style="font-family: 'Anton', sans-serif; margin-bottom: 10px;">Community</h4>
+                            <p style="font-family: 'Inter', 'Poppins', sans-serif;">Building connections among enthusiasts</p>
+                        </div>
+                        <div class="value-item">
+                            <i class="fas fa-shield-alt" style="font-size: 2.5rem; color: var(--primary-black); margin-bottom: 15px;"></i>
+                            <h4 style="font-family: 'Anton', sans-serif; margin-bottom: 10px;">Authenticity</h4>
+                            <p style="font-family: 'Inter', 'Poppins', sans-serif;">Genuine products guaranteed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="products" style="padding-top: 50px;">
+        <div class="container">
+            <h2 class="section-title">Reach Out to Us</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3 style="font-family: 'Anton', sans-serif; font-size: 1.8rem; margin-bottom: 30px; color: var(--primary-black);">Contact Information</h3>
+                    
+                    <div class="contact-method">
+                        <i class="fab fa-instagram" style="font-size: 2rem; color: var(--primary-yellow); margin-right: 20px;"></i>
+                        <div>
+                            <h4 style="font-family: 'Anton', sans-serif; margin-bottom: 5px;">Instagram</h4>
+                            <a href="https://www.instagram.com/carsmainly" target="_blank" style="color: var(--accent-green); text-decoration: none; font-size: 1.1rem; font-family: 'Inter', 'Poppins', sans-serif;">@carsmainly</a>
+                            <p style="margin-top: 5px; color: var(--primary-black); font-family: 'Inter', 'Poppins', sans-serif;">Check live stock updates and latest arrivals</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <i class="fas fa-envelope" style="font-size: 2rem; color: var(--accent-green); margin-right: 20px;"></i>
+                        <div>
+                            <h4 style="font-family: 'Anton', sans-serif; margin-bottom: 5px;">Email</h4>
+                            <p style="color: var(--accent-green); font-size: 1.1rem; font-family: 'Inter', 'Poppins', sans-serif;">Coming Soon</p>
+                            <p style="margin-top: 5px; color: var(--primary-black); font-family: 'Inter', 'Poppins', sans-serif;">General inquiries and support</p>
+                        </div>
+                    </div>
+                    
+                    <div class="shipping-info" style="margin-top: 50px; padding: 30px; background: rgba(255, 242, 0, 0.15); border-radius: 15px; border: 1px solid var(--glass-border); backdrop-filter: blur(10px);">
+                        <h3 style="font-family: 'Anton', sans-serif; font-size: 1.5rem; margin-bottom: 20px; text-align: center; color: var(--primary-black);">Shipping Information</h3>
+                        <p style="text-align: center; font-size: 1.1rem; line-height: 1.6; font-family: 'Inter', 'Poppins', sans-serif;">
+                            <i class="fas fa-truck" style="color: var(--accent-green); margin-right: 10px;"></i>
+                            We deliver across India with variable shipping charges based on location.
+                        </p>
+                        <p style="text-align: center; margin-top: 15px; font-size: 1rem; color: var(--primary-black); font-family: 'Inter', 'Poppins', sans-serif;">
+                            Delivery times typically range from 3-7 business days depending on your location.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>CARS MAINLY</h2>
+                    <p>Premium Hot Wheels Collection</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#products">Products</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/carsmainly" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Cars Mainly. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // script.js
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hamburger Menu Toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+            
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+            
+            // Header scroll effect
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // Load products dynamically
+            loadProducts();
+        });
+
+        // Function to load products from the images folder
+        function loadProducts() {
+            // Using your actual Hot Wheels product images
+            const products = [
+                { name: "Hot Wheels 2-Pack (Toyota Supra Red and Subaru WRX STi Pink)", image: "images/Hot Wheels 2-Pack (Toyota Supra Red and Subaru WRX STi Pink).png" },
+                { name: "Hot Wheels Porsche 911 Carrera Clip", image: "images/Hot Wheels Porsche 911 Carrera Clip..jpg" },
+                { name: "Pagani Utopia", image: "images/Pagani Utopia..jpg" },
+                { name: "Porsche 904 Carrera GTS", image: "images/Porsche 904 Carrera GTS..jpg" },
+                { name: "Hot Wheels 2024 Formula 1 (5-Car Pack)", image: "images/hot Wheels 2024 Formula 1 (5-Car Pack)..jpg" },
+                { name: "89 Mercedes-Benz 560 SEC AMG", image: "images/'89 Mercedes-Benz 560 SEC AMG..jpg" }
+            ];
+            
+            // Update products carousel
+            const productsContainer = document.getElementById('productsContainer');
+            if (productsContainer) {
+                productsContainer.innerHTML = '';
+                products.forEach(product => {
+                    const productCard = document.createElement('div');
+                    productCard.className = 'product-card tilt-effect';
+                    productCard.innerHTML = `
+                        <div class="image-container">
+                            <img src="${product.image}" alt="${product.name}">
+                        </div>
+                        <h3>${product.name}</h3>
+                        <p>Premium Hot Wheels Collection</p>
+                    `;
+                    // Add click event to redirect to Instagram
+                    productCard.addEventListener('click', () => {
+                        window.open('https://www.instagram.com/carsmainly', '_blank');
+                    });
+                    productsContainer.appendChild(productCard);
+                });
+                
+                // Reinitialize products carousel functionality
+                initProductsCarousel();
+            }
+        }
+
+        // Initialize products carousel
+        function initProductsCarousel() {
+            const productsCarousel = document.querySelector('.products-carousel');
+            const productCards = document.querySelectorAll('.product-card');
+            const productsPrevBtn = document.querySelector('.products-carousel-nav.prev');
+            const productsNextBtn = document.querySelector('.products-carousel-nav.next');
+            let productsCurrentIndex = 0;
+            
+            // Function to update products carousel
+            function updateProductsCarousel() {
+                if (productCards.length > 0 && productsCarousel) {
+                    const cardWidth = productCards[0].offsetWidth + 30; // width + margin
+                    productsCarousel.style.transform = `translateX(-${productsCurrentIndex * cardWidth}px)`;
+                }
+            }
+            
+            if (productsPrevBtn && productsNextBtn) {
+                productsPrevBtn.addEventListener('click', () => {
+                    if (productCards.length > 0) {
+                        productsCurrentIndex = (productsCurrentIndex - 1 + productCards.length) % productCards.length;
+                        updateProductsCarousel();
+                    }
+                });
+                
+                productsNextBtn.addEventListener('click', () => {
+                    if (productCards.length > 0) {
+                        productsCurrentIndex = (productsCurrentIndex + 1) % productCards.length;
+                        updateProductsCarousel();
+                    }
+                });
+            }
+            
+            // Tilt effect for cards
+            const tiltElements = document.querySelectorAll('.tilt-effect');
+            
+            tiltElements.forEach(element => {
+                element.addEventListener('mousemove', (e) => {
+                    const rect = element.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const rotateY = (x - centerX) / 10;
+                    const rotateX = (centerY - y) / 10;
+                    
+                    element.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+                });
+                
+                element.addEventListener('mouseleave', () => {
+                    element.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+                });
+            });
+        }
+
+        // Function to generate product name from file name
+        function generateProductName(fileName) {
+            // Remove file extension
+            let name = fileName.replace(/\.[^/.]+$/, "");
+            
+            // Convert underscores and hyphens to spaces
+            name = name.replace(/[_-]/g, " ");
+            
+            // Capitalize first letter of each word
+            name = name.replace(/\b\w/g, function(l) { return l.toUpperCase(); });
+            
+            return name;
+        }
+    </script>
+</body>
+</html>
