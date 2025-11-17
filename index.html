@@ -6,7 +6,7 @@
     <title>Cars Mainly - Premium Hot Wheels Showroom</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;700&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton:wght@400&family=Inter:wght@300;400;500;700&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -40,6 +40,7 @@
             color: var(--primary-black);
             overflow-x: hidden;
             line-height: 1.6;
+            /* Subtle background texture using gradients */
             background-image: radial-gradient(circle at 10% 20%, rgba(255, 242, 0, 0.1) 0%, transparent 20%),
                               radial-gradient(circle at 90% 80%, rgba(0, 154, 78, 0.1) 0%, transparent 20%);
         }
@@ -82,7 +83,7 @@
             align-items: center;
         }
         
-        /* Racing Outline Animation */
+        /* Racing Outline Animation for Logo */
         @keyframes racingOutline {
             0% { text-shadow: -2px -2px 0 var(--accent-green), 2px -2px 0 var(--accent-white), -2px 2px 0 var(--ferrari-red), 2px 2px 0 var(--primary-black); }
             50% { text-shadow: -2px -2px 0 var(--ferrari-red), 2px -2px 0 var(--primary-black), -2px 2px 0 var(--accent-green), 2px 2px 0 var(--accent-white); }
@@ -438,7 +439,7 @@
             <div class="about-content">
                 <h2 class="section-title">Our Story</h2>
                 <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 30px; text-align: center; max-width: 800px; margin: 0 auto 40px;">
-                    Founded with a passion for precision engineering and automotive excellence, Cars Mainly has become the premier destination for Hot Wheels enthusiasts in India. Our journey began with a simple vision: to bring the thrill of collecting and playing with premium die-cast vehicles to fans across the nation.
+                    Founded with a passion for precision engineering and automotive excellence, **Cars Mainly** has become the premier destination for Hot Wheels enthusiasts in India. Our journey began with a simple vision: to bring the thrill of collecting and playing with premium die-cast vehicles to fans across the nation.
                 </p>
                 
                 <div class="about-grid" style="display: flex; gap: 30px; justify-content: center; flex-wrap: wrap;">
@@ -577,8 +578,7 @@
 
         // --- Product Loading & Carousel Logic ---
         function loadProducts() {
-            // CRITICAL: The imagePath is set to the simplified 'product-X.jpg' format.
-            // Ensure your files in the 'images/' folder match these names exactly: product-1.jpg, product-2.jpg, etc.
+            // CRITICAL: The imagePath uses only lowercase file names inside the 'images/' folder.
             const products = [
                 { name: "Toyota Supra Red & Subaru WRX STi Pink 2-Pack", imagePath: "images/product-1.jpg" },
                 { name: "Porsche 911 Carrera Clip Exclusive", imagePath: "images/product-2.jpg" },
@@ -710,4 +710,3 @@
     </script>
 </body>
 </html>
-```eof
