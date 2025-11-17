@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cars Mainly - Premium Hot Wheels Showroom</title>
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;700&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -257,7 +256,6 @@
             align-items: center;
             justify-content: center;
             background: rgba(0, 0, 0, 0.05);
-            /* Maintain aspect ratio if height constraint is removed */
             aspect-ratio: 4/3; 
         }
 
@@ -373,7 +371,6 @@
     </style>
 </head>
 <body>
-    <!-- Header with Navigation -->
     <header>
         <div class="container">
             <div class="logo">
@@ -395,7 +392,6 @@
         </div>
     </header>
 
-    <!-- Home Section -->
     <section id="home" class="hero">
         <div class="hero-content">
             <div class="metallic-logo">
@@ -413,21 +409,18 @@
         <div class="hero-overlay"></div>
     </section>
 
-    <!-- Products Section -->
     <section id="products" class="products">
         <div class="container">
             <h2 class="section-title">Hot Wheels Collection</h2>
             <div class="products-carousel-container">
                 <div class="products-carousel" id="productsContainer">
-                    <!-- Products will be dynamically loaded here -->
-                </div>
+                    </div>
                 <button class="products-carousel-nav prev" id="productsPrevBtn"><i class="fas fa-chevron-left"></i></button>
                 <button class="products-carousel-nav next" id="productsNextBtn"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
     </section>
 
-    <!-- Shipping Notice -->
     <section class="shipping-notice">
         <div class="container">
             <div class="notice-content" style="display: flex; align-items: center; max-width: 600px; margin: 0 auto; text-align: left;">
@@ -440,7 +433,6 @@
         </div>
     </section>
 
-    <!-- About Section (Themed Red Background) -->
     <section id="about" class="themed-section">
         <div class="container">
             <div class="about-content">
@@ -469,7 +461,6 @@
         </div>
     </section>
 
-    <!-- Contact Section (Themed Red Background) -->
     <section id="contact" class="themed-section">
         <div class="container">
             <h2 class="section-title">Reach Out to Us</h2>
@@ -506,7 +497,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
@@ -587,15 +577,15 @@
 
         // --- Product Loading & Carousel Logic ---
         function loadProducts() {
-            // NOTE: These names MUST match the file names in your 'images/' folder on GitHub.
-            // Using lowercase and hyphens is safest for URL reliability across servers.
+            // CRITICAL: The imagePath is set to the simplified 'product-X.jpg' format.
+            // Ensure your files in the 'images/' folder match these names exactly: product-1.jpg, product-2.jpg, etc.
             const products = [
-                { name: "Toyota Supra Red & Subaru WRX STi Pink 2-Pack", imagePath: "images/hot-wheels-2-pack-toyota-supra-red-and-subaru-wrx-sti-pink.png" },
-                { name: "Porsche 911 Carrera Clip Exclusive", imagePath: "images/hot-wheels-porsche-911-carrera-clip.jpg" },
-                { name: "Pagani Utopia", imagePath: "images/pagani-utopia.jpg" },
-                { name: "Porsche 904 Carrera GTS", imagePath: "images/porsche-904-carrera-gts.jpg" },
-                { name: "Hot Wheels 2024 Formula 1 (5-Car Pack)", imagePath: "images/hot-wheels-2024-formula-1-5-car-pack.jpg" },
-                { name: "'89 Mercedes-Benz 560 SEC AMG", imagePath: "images/89-mercedes-benz-560-sec-amg.jpg" }
+                { name: "Toyota Supra Red & Subaru WRX STi Pink 2-Pack", imagePath: "images/product-1.jpg" },
+                { name: "Porsche 911 Carrera Clip Exclusive", imagePath: "images/product-2.jpg" },
+                { name: "Pagani Utopia", imagePath: "images/product-3.jpg" },
+                { name: "Porsche 904 Carrera GTS", imagePath: "images/product-4.jpg" },
+                { name: "Hot Wheels 2024 Formula 1 (5-Car Pack)", imagePath: "images/product-5.jpg" },
+                { name: "'89 Mercedes-Benz 560 SEC AMG", imagePath: "images/product-6.jpg" }
             ];
             
             const productsContainer = document.getElementById('productsContainer');
@@ -607,7 +597,7 @@
                     productCard.innerHTML = `
                         <div class="image-container">
                             <img src="${product.imagePath}" alt="${product.name}" loading="lazy" 
-                                 onerror="this.onerror=null;this.src='https://placehold.co/400x300/000/fff?text=Image+Missing';">
+                                 onerror="this.onerror=null;this.src='https://placehold.co/400x300/ED1C24/fff?text=IMAGE+ERROR%3A+Check+images%2F+Folder';">
                         </div>
                         <div class="product-info" style="padding: 15px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 10px; flex-grow: 1;">
                             <h3 style="font-family: 'Anton', sans-serif; font-size: 1.2rem; color: var(--primary-black); margin-bottom: 5px; flex-grow: 1;">${product.name}</h3>
@@ -720,3 +710,4 @@
     </script>
 </body>
 </html>
+```eof
