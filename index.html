@@ -11,34 +11,32 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
    
     <style>
-        /* BASE STYLES & VARIABLES - Enhanced with Carbon Fiber Theme */
+        /* BASE STYLES & VARIABLES - Ferrari Inspired Design */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         :root {
-            /* Refined Racing Palette - Carbon Fiber Integration */
-            --ferrari-red: #D32F2F;
-            --primary-yellow: #FDD835;
-            --primary-black: #121212;
-            --accent-green: #388E3C;
-            --accent-white: #FAFAFA;
-            --dark-charcoal: #1E1E1E;
-            --carbon-black: #0D0D0D;
-            --carbon-accent: rgba(255, 255, 255, 0.05);
-            --gradient-bg: linear-gradient(135deg, var(--carbon-black) 0%, var(--dark-charcoal) 100%);
+            /* Official Ferrari Palette */
+            --ferrari-red: #CC0000; /* Classic Prancing Horse Red */
+            --ferrari-yellow: #FFD700; /* Ferrari Yellow */
+            --ferrari-black: #000000;
+            --ferrari-white: #FFFFFF;
+            --ferrari-grey: #A6A6A6;
+            --ferrari-dark: #1A1A1A;
+            --gradient-bg: linear-gradient(135deg, var(--ferrari-dark) 0%, #2A2A2A 100%);
            
-            /* UI Enhancements */
+            /* UI Enhancements - Ferrari Shield Motifs */
             --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            --shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.4);
-            --glow: 0 0 8px rgba(253, 216, 53, 0.3);
-            --border-radius: 20px; /* Softer, premium corners */
+            --shadow-hover: 0 10px 25px rgba(204, 0, 0, 0.3);
+            --glow: 0 0 8px rgba(255, 215, 0, 0.4);
+            --border-radius: 8px; /* Sharp, automotive edges */
         }
         body {
             font-family: 'Inter', sans-serif;
             background: var(--gradient-bg); 
-            color: var(--accent-white); 
+            color: var(--ferrari-white); 
             overflow-x: hidden;
             line-height: 1.7;
             -webkit-text-size-adjust: 100%;
@@ -47,7 +45,7 @@
             -moz-osx-font-smoothing: grayscale;
             position: relative;
         }
-        /* Carbon Fiber Overlay Pattern */
+        /* Ferrari Shield Pattern Overlay */
         body::before {
             content: '';
             position: fixed;
@@ -56,11 +54,10 @@
             width: 100%;
             height: 100%;
             background-image: 
-                radial-gradient(ellipse 1px 1px at 20px 20px, var(--carbon-accent), transparent),
-                radial-gradient(-45deg, ellipse 1px 1px at 20px 20px, var(--carbon-accent), transparent),
-                linear-gradient(45deg, transparent 49%, var(--carbon-accent) 50%, transparent 51%);
-            background-size: 40px 40px, 40px 40px, 40px 40px;
-            opacity: 0.3;
+                repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(204, 0, 0, 0.02) 10px, rgba(204, 0, 0, 0.02) 20px),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 0 L100 30 L100 70 L50 100 L0 70 L0 30 Z" fill="none" stroke="rgba(204,0,0,0.05)" stroke-width="1"/></svg>') repeat;
+            background-size: 20px 20px, 100px 100px;
+            opacity: 0.1;
             z-index: -1;
             pointer-events: none;
         }
@@ -68,43 +65,44 @@
             width: 95%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 16px; /* Increased for better breathing room */
+            padding: 0 10px; /* Optimized for mobile touch */
         }
        
         .section-title {
             font-family: 'Anton', sans-serif;
             font-size: clamp(1.8rem, 5vw, 2.4rem);
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             color: var(--ferrari-red); 
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             position: relative;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
         .section-title::after {
             content: '';
             display: block;
-            width: 80px;
+            width: 100px;
             height: 4px;
-            background: linear-gradient(90deg, var(--primary-yellow), var(--ferrari-red));
-            margin: 12px auto 0;
+            background: var(--ferrari-yellow);
+            margin: 10px auto 0;
             border-radius: 2px;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
         }
         
-        /* HEADER - Carbon-Infused, Static Logo */
+        /* HEADER - Ferrari Shield Header */
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(13, 13, 13, 0.98); 
-            padding: 16px 0;
+            background: rgba(0, 0, 0, 0.95); 
+            padding: 12px 0;
             transition: var(--transition);
-            border-bottom: 2px solid var(--carbon-accent);
-            backdrop-filter: blur(15px);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            border-bottom: 3px solid var(--ferrari-red);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(204, 0, 0, 0.2);
         }
         header .container {
             display: flex;
@@ -112,75 +110,57 @@
             align-items: center;
         }
        
-        /* Static Logo - Bold, Gradient with Subtle Shadow */
+        /* Static Logo - Ferrari Inspired Gradient */
         .logo h1 {
             font-family: 'Anton', sans-serif;
-            font-size: clamp(1.5rem, 4.5vw, 1.8rem);
-            background: linear-gradient(135deg, var(--ferrari-red) 0%, var(--primary-yellow) 50%, var(--ferrari-red) 100%);
+            font-size: clamp(1.4rem, 4vw, 1.6rem);
+            background: linear-gradient(135deg, var(--ferrari-red) 0%, var(--ferrari-yellow) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5), 0 0 10px rgba(253, 216, 53, 0.2);
-            font-weight: 400;
-            letter-spacing: 1px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+            letter-spacing: 2px;
         }
        
-        /* Mobile Navigation - Refined Dropdown */
+        /* Mobile Navigation - Clean Dropdown */
         .nav-menu {
             display: none;
             position: absolute;
             top: 100%;
             left: 0;
             width: 100%;
-            background: rgba(13, 13, 13, 0.99); 
-            border-top: 1px solid var(--carbon-accent);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-            border-radius: 0 0 20px 20px;
-            margin-top: 4px;
+            background: rgba(0, 0, 0, 0.98); 
+            border-top: 1px solid rgba(204, 0, 0, 0.2);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            border-radius: 0 0 8px 8px;
         }
         .nav-menu.active {
             display: block;
         }
         .nav-menu ul {
             list-style: none;
-            padding: 12px 0;
+            padding: 10px 0;
         }
         .nav-menu ul li a {
             display: block;
-            padding: 14px 24px;
-            color: var(--accent-white); 
+            padding: 12px 20px;
+            color: var(--ferrari-white); 
             text-decoration: none;
             transition: var(--transition);
-            border-left: 3px solid transparent;
-            position: relative;
-        }
-        .nav-menu ul li a::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 4px;
-            height: 0;
-            background: var(--primary-yellow);
-            transition: var(--transition);
+            border-left: 4px solid transparent;
         }
         .nav-menu ul li a:hover,
         .nav-menu ul li a.active {
-            color: var(--primary-yellow); 
-            border-left-color: var(--primary-yellow);
-            background: rgba(253, 216, 53, 0.05);
-        }
-        .nav-menu ul li a:hover::before,
-        .nav-menu ul li a.active::before {
-            height: 100%;
+            color: var(--ferrari-yellow); 
+            border-left-color: var(--ferrari-red);
+            background: rgba(204, 0, 0, 0.1);
         }
         .hamburger {
             display: flex;
             flex-direction: column;
             justify-content: space-around;
-            width: 28px;
-            height: 22px;
+            width: 25px;
+            height: 20px;
             background: none;
             border: none;
             cursor: pointer;
@@ -188,100 +168,87 @@
         }
         .hamburger span {
             width: 100%;
-            height: 2.5px;
-            background: var(--accent-white); 
+            height: 3px;
+            background: var(--ferrari-white); 
             transition: var(--transition);
-            border-radius: 2px;
+            border-radius: 1px;
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
         }
         .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(6px, 6px);
+            transform: rotate(45deg) translate(5px, 5px);
         }
         .hamburger.active span:nth-child(2) {
             opacity: 0;
-            transform: translateX(-20px);
         }
         .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(8px, -7px);
+            transform: rotate(-45deg) translate(7px, -6px);
         }
         
-        /* HERO SECTION - Carbon Overlay, Static Logo */
+        /* HERO SECTION - Ferrari Racing Stripes */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, var(--primary-yellow) 0%, #FFB300 50%, var(--primary-yellow) 100%);
-            padding-top: 80px;
+            background: linear-gradient(135deg, var(--ferrari-yellow) 0%, #FFA500 100%);
+            padding-top: 70px;
             position: relative;
             overflow: hidden;
         }
         
-        /* Subtle Carbon Overlay on Hero */
-        .hero::after {
+        /* Iconic Ferrari Stripes */
+        .hero::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="carbon-hero" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M0 0h50v50H0z" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="1"/><path d="M25 0l25 25-25 25" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23carbon-hero)"/></svg>') repeat;
-            opacity: 0.15;
+            height: 12px;
+            background: repeating-linear-gradient(90deg, var(--ferrari-red) 0px, var(--ferrari-red) 20px, var(--ferrari-white) 20px, var(--ferrari-white) 40px);
             z-index: 1;
+            box-shadow: 0 0 10px rgba(204, 0, 0, 0.5);
         }
-        
-        /* Dynamic Stripes - Retained but Subtler */
-        .hero::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            width: 100%;
-            height: 6px;
-            background: linear-gradient(90deg, var(--ferrari-red), transparent, var(--ferrari-red));
-            z-index: 2;
-        }
-        .hero::before { top: 0; }
-        .hero .hero-content::after {
+        .hero::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 6px;
-            background: linear-gradient(90deg, var(--ferrari-red), transparent, var(--ferrari-red));
-            z-index: 2;
+            height: 12px;
+            background: repeating-linear-gradient(90deg, var(--ferrari-red) 0px, var(--ferrari-red) 20px, var(--ferrari-white) 20px, var(--ferrari-white) 40px);
+            z-index: 1;
+            box-shadow: 0 0 10px rgba(204, 0, 0, 0.5);
         }
         
         .hero-content {
             text-align: center;
-            z-index: 3;
-            padding: 0 24px;
-            color: var(--primary-black); 
+            z-index: 2;
+            padding: 0 20px;
+            color: var(--ferrari-black); 
             max-width: 90%;
         }
         .metallic-logo h1 {
             font-family: 'Anton', sans-serif;
-            font-size: clamp(2.8rem, 9vw, 3.5rem);
-            background: linear-gradient(135deg, var(--primary-black) 0%, #333 50%, var(--primary-black) 100%);
+            font-size: clamp(2.5rem, 8vw, 3.2rem);
+            background: linear-gradient(135deg, var(--ferrari-black) 0%, #333333 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 2px 2px 0 rgba(255, 255, 255, 0.1);
-            margin-bottom: 12px;
-            letter-spacing: 2px;
-            font-weight: 400;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+            margin-bottom: 10px;
+            letter-spacing: 3px;
         }
         .hero-content h2 {
-            font-size: clamp(1.6rem, 4.5vw, 2rem);
-            margin-bottom: 1.2rem;
-            font-weight: 500;
+            font-size: clamp(1.5rem, 4vw, 1.9rem);
+            margin-bottom: 1rem;
+            font-weight: 700;
             opacity: 0;
             transform: translateY(20px);
             animation: fadeUp 0.8s ease forwards;
         }
         .hero-content p {
-            font-size: 1.15rem;
-            margin-bottom: 2.8rem;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
             opacity: 0;
             transform: translateY(20px);
             animation: fadeUp 0.8s ease 0.2s forwards;
@@ -296,83 +263,53 @@
         .hero-buttons {
             display: flex;
             flex-direction: column;
-            gap: 18px;
-            margin-top: 32px;
+            gap: 15px;
+            margin-top: 30px;
         }
-        /* BUTTONS - Carbon Border Accent */
+        /* BUTTONS - Ferrari Red Accents */
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            padding: 18px 28px;
+            gap: 8px;
+            padding: 15px 25px;
             border-radius: var(--border-radius);
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.05rem;
+            font-size: 1rem;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
+            letter-spacing: 1px;
             transition: var(--transition);
-            box-shadow: 
-                0 8px 20px rgba(0, 0, 0, 0.3), 
-                inset 0 1px 0 rgba(255, 255, 255, 0.15);
-            border: 1px solid var(--carbon-accent);
-            background: rgba(56, 142, 60, 0.95);
-            color: var(--accent-white);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border: 2px solid var(--ferrari-red);
+            background: var(--ferrari-red);
+            color: var(--ferrari-white);
             touch-action: manipulation;
             width: 100%;
-            min-height: 56px;
-            backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
-        }
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: var(--transition);
-        }
-        .btn:hover::before {
-            left: 100%;
+            min-height: 50px;
         }
         .btn:hover,
         .btn:active {
-            transform: translateY(-3px);
-            background: rgba(76, 175, 80, 1);
-            box-shadow: 
-                0 15px 35px rgba(237, 28, 36, 0.3), 
-                inset 0 1px 0 rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+            background: var(--ferrari-yellow);
+            color: var(--ferrari-black);
+            box-shadow: 0 8px 25px rgba(204, 0, 0, 0.4);
+            border-color: var(--ferrari-yellow);
         }
-        .btn i { font-size: 1.2rem; }
+        .btn i { font-size: 1.1rem; }
         
-        /* PRODUCTS CAROUSEL - Carbon Textured Cards */
+        /* PRODUCTS CAROUSEL - Full Card Visibility like Original */
         .products {
-            padding: 80px 0;
-            background: var(--carbon-black); 
-            color: var(--accent-white);
-            position: relative;
-        }
-        .products::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="carbon-products" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M0 0h100v100H0z" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="0.5"/><path d="M50 0l50 50-50 50" fill="none" stroke="rgba(255,255,255,0.01)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23carbon-products)"/></svg>') repeat;
-            opacity: 0.4;
-            z-index: -1;
+            padding: 60px 0;
+            background: var(--ferrari-dark); 
+            color: var(--ferrari-white);
         }
         .products-carousel-container {
             max-width: 100%;
-            overflow-x: auto;
+            overflow-x: scroll;
             -webkit-overflow-scrolling: touch;
-            padding: 24px 0;
-            scroll-snap-type: x mandatory;
+            padding: 20px 0;
+            justify-content: flex-start;
             scrollbar-width: none;
             -ms-overflow-style: none;
         }
@@ -382,149 +319,119 @@
 
         .products-carousel {
             display: flex;
-            gap: 24px;
-            padding: 0 12px;
+            gap: 20px;
+            padding: 0 10px;
         }
         .product-card {
-            background: rgba(255, 255, 255, 0.06); 
+            background: rgba(255, 255, 255, 0.05); 
             border-radius: var(--border-radius);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-            border: 1px solid var(--carbon-accent);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(204, 0, 0, 0.2);
             flex-shrink: 0;
-            width: 86vw;
-            max-width: 380px;
+            width: 85vw;
+            max-width: 350px;
             transition: var(--transition);
-            scroll-snap-align: start;
             overflow: hidden;
-            position: relative;
-        }
-        .product-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="carbon-card" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M0 0h50v50H0z" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23carbon-card)"/></svg>') repeat;
-            opacity: 0.5;
-            z-index: -1;
         }
         .product-card:hover,
         .product-card:active {
-            transform: scale(1.03);
+            transform: scale(1.02);
             box-shadow: var(--shadow-hover);
-            border-color: var(--primary-yellow);
+            border-color: var(--ferrari-red);
         }
        
         .product-card .image-container {
-            height: 240px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0.15));
+            height: 200px;
+            background: rgba(255, 255, 255, 0.03);
             border-radius: var(--border-radius) var(--border-radius) 0 0;
             overflow: hidden;
-            position: relative;
         }
         .product-card img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             transition: var(--transition);
         }
         .product-card:hover img {
-            transform: scale(1.08);
+            transform: scale(1.05);
         }
         .product-info {
-            padding: 24px;
-            gap: 12px;
+            padding: 15px;
+            gap: 8px;
         }
         .product-info h3 {
-            color: var(--accent-white);
+            color: var(--ferrari-white);
             font-family: 'Anton', sans-serif;
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            letter-spacing: 0.5px;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
         }
         .product-info p {
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.8rem;
         }
         .product-info .btn {
             width: auto;
-            padding: 14px 20px;
-            font-size: 0.95rem;
-            margin-top: 12px;
-            background: rgba(253, 216, 53, 0.95);
-            color: var(--primary-black);
-            border: 1px solid rgba(253, 216, 53, 0.3);
+            padding: 10px 15px;
+            font-size: 0.8rem;
+            margin: 10px auto 0;
+            background: var(--ferrari-yellow);
+            color: var(--ferrari-black);
+            border-color: var(--ferrari-yellow);
         }
         .product-info .btn:hover {
-            background: rgba(253, 216, 53, 1);
-            color: var(--primary-black);
-            transform: none;
+            background: var(--ferrari-red);
+            color: var(--ferrari-white);
+            border-color: var(--ferrari-red);
         }
         .product-card.animate {
             opacity: 1;
-            transform: translateY(0) scale(1);
+            transform: translateY(0);
         }
         
-        /* SHIPPING NOTICE - Carbon Enhanced */
+        /* SHIPPING NOTICE - Ferrari Accents */
         .shipping-notice {
-            padding: 70px 0;
-            background: linear-gradient(135deg, var(--dark-charcoal), var(--carbon-black));
-            color: var(--accent-white);
+            padding: 50px 0;
+            background: var(--ferrari-dark);
+            color: var(--ferrari-white);
             text-align: center;
-            position: relative;
-        }
-        .shipping-notice::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="carbon-notice" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M0 0h60v60H0z" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23carbon-notice)"/></svg>') repeat;
-            opacity: 0.2;
-            z-index: -1;
         }
         .shipping-notice .notice-content {
             flex-direction: column;
             text-align: center;
-            gap: 24px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .shipping-notice h3 {
-            font-size: 1.6rem;
-            color: var(--primary-yellow); 
-            font-family: 'Anton', sans-serif;
-            margin-bottom: 12px;
-            letter-spacing: 1px;
-        }
-        .shipping-notice i {
-            font-size: 3.5rem;
-            color: var(--primary-yellow);
-            margin-bottom: 16px;
-            animation: bounce 2.5s infinite;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-12px); }
-            60% { transform: translateY(-6px); }
-        }
-        .shipping-notice p {
-            font-size: 1.05rem;
-            opacity: 0.9;
+            gap: 15px;
             max-width: 500px;
             margin: 0 auto;
         }
+        .shipping-notice h3 {
+            font-size: 1.4rem;
+            color: var(--ferrari-red); 
+            font-family: 'Anton', sans-serif;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        .shipping-notice i {
+            font-size: 2.5rem;
+            color: var(--ferrari-yellow);
+            margin-bottom: 10px;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        .shipping-notice p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
         
-        /* THEMED SECTIONS - Deeper Carbon Integration */
+        /* THEMED SECTIONS - Ferrari Red Base */
         .themed-section {
-            padding: 80px 0;
-            background: linear-gradient(135deg, var(--ferrari-red), #B71C1C);
-            color: var(--accent-white);
+            padding: 60px 0;
+            background: var(--ferrari-red); 
+            color: var(--ferrari-white);
             position: relative;
-            overflow: hidden;
         }
         .themed-section::before {
             content: '';
@@ -533,71 +440,55 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="carbon-themed" width="80" height="80" patternUnits="userSpaceOnUse"><path d="M0 0h80v80H0z" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/><path d="M40 0l40 40-40 40" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="1.5"/></pattern></defs><rect width="100" height="100" fill="url(%23carbon-themed)"/></svg>') repeat;
-            opacity: 0.25;
+            background: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.05) 0px, rgba(255, 255, 255, 0.05) 10px, transparent 10px, transparent 20px);
+            opacity: 0.3;
             z-index: 0;
-            pointer-events: none;
         }
         .themed-section > .container {
             position: relative;
             z-index: 1;
         }
         .themed-section .section-title {
-            color: var(--primary-yellow);
-            position: relative;
-            z-index: 2;
-            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+            color: var(--ferrari-yellow);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
         .about-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 28px;
-            max-width: 700px;
+            gap: 20px;
+            max-width: 600px;
             margin: 0 auto;
         }
         .about-card {
-            padding: 28px;
+            padding: 20px;
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: var(--border-radius);
-            background: rgba(0, 0, 0, 0.4); 
+            background: rgba(0, 0, 0, 0.3); 
             transition: var(--transition);
-            position: relative;
-            z-index: 2;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        }
-        .about-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="carbon-about" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M0 0h40v40H0z" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.2"/></pattern></defs><rect width="100" height="100" fill="url(%23carbon-about)"/></svg>') repeat;
-            opacity: 0.6;
-            z-index: -1;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
         .about-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
-            border-color: var(--primary-yellow);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            border-color: var(--ferrari-yellow);
         }
         .about-card h3 {
             font-family: 'Anton', sans-serif;
-            margin-bottom: 14px;
-            font-size: 1.5rem;
-            color: var(--primary-yellow);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+            color: var(--ferrari-yellow);
             letter-spacing: 1px;
         }
         .about-card p {
-            font-size: 1.02rem;
+            font-size: 0.95rem;
             line-height: 1.6;
         }
 
-        /* CONTACT - Spacious Layout */
+        /* CONTACT - Ferrari Styled Methods */
         .contact-content {
             display: flex;
             justify-content: center;
-            max-width: 600px;
+            max-width: 500px;
             margin: 0 auto;
         }
         .contact-info {
@@ -606,179 +497,146 @@
         .contact-method {
             display: flex;
             align-items: flex-start;
-            gap: 18px;
-            margin-bottom: 28px;
-            padding: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: var(--border-radius);
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.2);
             transition: var(--transition);
-            position: relative;
-        }
-        .contact-method::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="carbon-contact" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M0 0h30v30H0z" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23carbon-contact)"/></svg>') repeat;
-            opacity: 0.4;
-            z-index: -1;
         }
         .contact-method:hover {
-            border-color: var(--primary-yellow);
-            background: rgba(0, 0, 0, 0.5);
-            transform: translateX(4px);
+            border-color: var(--ferrari-yellow);
+            background: rgba(0, 0, 0, 0.4);
         }
         .contact-method i {
-            font-size: 2rem;
-            color: var(--primary-yellow);
+            font-size: 1.8rem;
+            color: var(--ferrari-yellow);
             margin-top: 2px;
             flex-shrink: 0;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
         }
         .contact-method h4 {
             font-family: 'Anton', sans-serif;
-            margin-bottom: 8px;
-            font-size: 1.3rem;
+            margin-bottom: 5px;
+            font-size: 1.2rem;
         }
         .contact-method a {
             text-decoration: none;
-            color: var(--primary-yellow);
-            font-size: 1.05rem;
+            color: var(--ferrari-yellow);
+            font-size: 1rem;
             font-weight: 500;
         }
         .contact-method p {
-            font-size: 0.95rem;
-            opacity: 0.85;
-            margin-top: 6px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 5px;
         }
         .shipping-info {
-            padding: 24px;
+            padding: 20px;
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: var(--border-radius);
-            background: rgba(0, 0, 0, 0.3);
-            margin-top: 24px;
-            position: relative;
-        }
-        .shipping-info::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="carbon-ship" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M0 0h50v50H0z" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23carbon-ship)"/></svg>') repeat;
-            opacity: 0.3;
-            z-index: -1;
+            background: rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
         }
         .shipping-info h3 {
             font-family: 'Anton', sans-serif;
-            font-size: 1.5rem;
-            margin-bottom: 14px;
-            color: var(--primary-yellow);
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: var(--ferrari-yellow);
             letter-spacing: 1px;
         }
         .shipping-info p {
-            font-size: 1.05rem !important;
-            line-height: 1.7;
+            font-size: 1rem !important;
+            line-height: 1.6;
         }
         .shipping-info i {
-            color: var(--accent-green);
-            margin-right: 10px;
-            font-size: 1.1rem;
+            color: var(--ferrari-red);
+            margin-right: 8px;
         }
         
-        /* FOOTER - Full Carbon Texture */
+        /* FOOTER - Ferrari Shield Footer */
         footer {
-            background: var(--primary-black);
+            background: var(--ferrari-black);
             background-image: 
-                radial-gradient(circle at 25% 25%, rgba(253, 216, 53, 0.08) 0%, transparent 50%),
-                linear-gradient(90deg, rgba(211, 47, 47, 0.05) 0%, transparent 50%, rgba(211, 47, 47, 0.05) 100%),
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="carbon-footer" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M0 0h60v60H0z" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/><path d="M30 0l30 30-30 30" fill="none" stroke="rgba(255,255,255,0.01)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23carbon-footer)"/></svg>') repeat;
-            border-top: 5px solid var(--ferrari-red); 
-            padding: 50px 0 25px;
-            color: var(--accent-white);
-            position: relative;
+                repeating-linear-gradient(45deg, rgba(204, 0, 0, 0.05) 0px, rgba(204, 0, 0, 0.05) 10px, transparent 10px, transparent 20px);
+            border-top: 4px solid var(--ferrari-red); 
+            padding: 40px 0 20px;
+            color: var(--ferrari-white);
         }
         footer .footer-content {
             display: flex;
             flex-direction: column;
-            gap: 28px;
+            gap: 20px;
             text-align: center;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
         .footer-logo h2 {
             font-family: 'Anton', sans-serif;
-            font-size: 1.8rem;
-            background: linear-gradient(135deg, var(--primary-yellow) 0%, var(--ferrari-red) 100%);
+            font-size: 1.6rem;
+            background: linear-gradient(135deg, var(--ferrari-yellow) 0%, var(--ferrari-red) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 6px;
-            letter-spacing: 1px;
-            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+            margin-bottom: 5px;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
         .footer-logo p {
-            font-size: 0.9rem;
-            opacity: 0.75;
+            font-size: 0.85rem;
+            opacity: 0.7;
         }
         .footer-links {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 24px;
+            gap: 20px;
         }
         .footer-links a {
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.75);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             transition: var(--transition);
-            padding: 4px 8px;
-            border-radius: 4px;
         }
         .footer-links a:hover {
-            color: var(--primary-yellow);
-            background: rgba(253, 216, 53, 0.1);
+            color: var(--ferrari-yellow);
         }
         .social-icons {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
         }
         .social-icons a {
-            font-size: 1.5rem;
-            color: var(--primary-yellow);
+            font-size: 1.4rem;
+            color: var(--ferrari-yellow);
             transition: var(--transition);
             padding: 8px;
             border-radius: 50%;
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--carbon-accent);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         .social-icons a:hover {
-            transform: scale(1.25);
-            filter: drop-shadow(0 0 10px var(--glow));
-            background: rgba(253, 216, 53, 0.1);
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 8px var(--glow));
+            background: var(--ferrari-red);
         }
         .copyright {
-            padding-top: 24px;
-            color: rgba(255, 255, 255, 0.45);
-            font-size: 0.85rem;
+            padding-top: 15px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.8rem;
             text-align: center;
-            border-top: 1px solid var(--carbon-accent);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* RESPONSIVE IMPROVEMENTS */
+        /* Mobile Optimizations */
         @media (max-width: 480px) {
-            .container { padding: 0 12px; }
-            .hero-buttons { gap: 14px; }
-            .product-info { padding: 20px; }
-            .about-card { padding: 24px; }
-            .contact-method { padding: 18px; gap: 16px; }
+            .container { padding: 0 8px; }
+            .hero-buttons { gap: 12px; }
+            .product-info { padding: 12px; }
+            .about-card { padding: 16px; }
+            .contact-method { padding: 12px; gap: 12px; }
+            .section-title { letter-spacing: 2px; margin-bottom: 25px; }
         }
         @media (min-width: 768px) {
-            .about-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+            .about-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
         }
     </style>
 </head>
@@ -825,7 +683,7 @@
                 <div class="products-carousel" id="productsContainer">
                 </div>
             </div>
-            <p style="text-align: center; margin-top: 24px; font-size: 0.95rem; color: rgba(255, 255, 255, 0.75);">&larr; **Scroll horizontally to view more products** &rarr;</p>
+            <p style="text-align: center; margin-top: 20px; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">&larr; **Scroll horizontally to view more products** &rarr;</p>
         </div>
     </section>
     <section class="shipping-notice lazy-section">
@@ -843,7 +701,7 @@
         <div class="container">
             <div class="about-content">
                 <h2 class="section-title">Our Story</h2>
-                <p style="font-size: 1.15rem; line-height: 1.8; margin: 0 auto 40px; text-align: center; max-width: 800px; opacity: 0.95;">
+                <p style="font-size: 1.1rem; line-height: 1.7; margin: 0 auto 30px; text-align: center; max-width: 800px; opacity: 0.95;">
                     Founded with a passion for precision engineering and automotive excellence, **Cars Mainly** has become the premier destination for Hot Wheels enthusiasts in India. Our journey began with a simple vision: to bring the thrill of collecting and playing with premium die-cast vehicles to fans across the nation.
                 </p>
                
@@ -924,7 +782,7 @@
         </div>
     </footer>
     <script>
-        // Enhanced Debounce and Animations - Retained for Functionality
+        // Debounce utility
         function debounce(func, wait) {
             let timeout;
             return function executedFunction(...args) {
@@ -937,11 +795,11 @@
             };
         }
 
-        function staggerAnimate(elements, delay = 200) {
+        // Stagger animation function
+        function staggerAnimate(elements, delay = 150) {
             elements.forEach((el, index) => {
                 setTimeout(() => {
-                    el.style.opacity = '1';
-                    el.style.transform = 'translateY(0) scale(1)';
+                    el.classList.add('animate');
                 }, index * delay);
             });
         }
@@ -950,7 +808,7 @@
             const hamburger = document.getElementById('hamburger');
             const navMenu = document.getElementById('navMenu');
             
-            // Improved Hamburger Toggle
+            // Hamburger Menu Toggle
             hamburger.addEventListener('click', () => {
                 const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
                 hamburger.setAttribute('aria-expanded', !isExpanded);
@@ -958,21 +816,23 @@
                 hamburger.classList.toggle('active');
             });
            
-            // Nav Links - Smooth Scroll with Active States
+            // Nav links: smooth scroll, active class, close mobile
             document.querySelectorAll('#navMenu a[href^="#"]').forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
                     const targetId = link.getAttribute('href');
                     const target = document.querySelector(targetId);
                     if (target) {
-                        const offsetTop = target.getBoundingClientRect().top + window.pageYOffset - 80; 
+                        const offsetTop = target.getBoundingClientRect().top + window.pageYOffset - 70; 
                         window.scrollTo({
                             top: offsetTop,
                             behavior: 'smooth'
                         });
                     }
+                    // Active class
                     document.querySelectorAll('#navMenu a').forEach(a => a.classList.remove('active'));
                     link.classList.add('active');
+                    // Close mobile menu
                     if (navMenu.classList.contains('active')) {
                         hamburger.setAttribute('aria-expanded', 'false');
                         navMenu.classList.remove('active');
@@ -981,14 +841,14 @@
                 });
             });
            
-            // Dynamic Copyright
+            // Dynamic copyright year
             const copyright = document.getElementById('copyright-text');
             if (copyright) {
                 const currentYear = new Date().getFullYear();
                 copyright.innerHTML = `&copy; ${currentYear} Cars Mainly. All rights reserved.`;
             }
            
-            // Refined Hero Typewriter - Smoother
+            // Hero typewriter animation (no logo animation)
             const heroH2 = document.querySelector('.hero-content h2');
             const heroP = document.querySelector('.hero-content p');
             const heroBtns = document.querySelectorAll('.hero-buttons .btn');
@@ -1000,27 +860,28 @@
                     if (i < text.length) {
                         heroH2.innerHTML += text.charAt(i);
                         i++;
-                        setTimeout(typeWriter, 60 + Math.random() * 30);
+                        setTimeout(typeWriter, 50 + Math.random() * 20);
                     } else {
-                        // Trigger fade-up animations
-                        heroP.style.animationDelay = '0.3s';
-                        heroP.style.animation = 'fadeUp 0.8s ease forwards';
-                        heroBtns.forEach((btn, index) => {
-                            btn.style.animationDelay = `${0.5 + index * 0.1}s`;
-                            btn.style.animation = 'fadeUp 0.8s ease forwards';
-                        });
+                        setTimeout(() => {
+                            heroP.classList.add('animate');
+                            setTimeout(() => {
+                                heroBtns.forEach((btn, index) => {
+                                    setTimeout(() => btn.classList.add('animate'), index * 100);
+                                });
+                            }, 100);
+                        }, 200);
                     }
                 }
-                setTimeout(typeWriter, 400);
+                setTimeout(typeWriter, 300);
             }
            
-            // Load Products
+            // Load products
             loadProducts();
            
-            // Enhanced Lazy Loading
+            // Lazy loading for sections
             initLazySections();
            
-            // Prevent Zoom on Double-Tap
+            // Prevent double-tap zoom
             let lastTouchEnd = 0;
             document.addEventListener('touchend', (event) => {
                 const now = new Date().getTime();
@@ -1030,22 +891,21 @@
                 lastTouchEnd = now;
             }, { passive: true });
 
-            // Carousel Snap Enhancement
+            // Initial scroll for carousel
             const productsContainer = document.getElementById('productsContainer');
             if (productsContainer) {
-                productsContainer.addEventListener('scroll', debounce(() => {
-                    const cards = productsContainer.querySelectorAll('.product-card');
-                    cards.forEach(card => card.style.transform = 'scale(1)');
-                }, 100));
+                setTimeout(() => {
+                    productsContainer.scrollLeft = 0;
+                }, 10);
             }
         });
 
-        // Lazy Sections with Intersection Observer
+        // Lazy Sections Observer
         function initLazySections() {
             const lazySections = document.querySelectorAll('.lazy-section');
             const observerOptions = {
                 root: null,
-                rootMargin: '0px 0px -100px 0px',
+                rootMargin: '0px 0px -50px 0px',
                 threshold: 0.1
             };
             const observer = new IntersectionObserver((entries) => {
@@ -1053,22 +913,9 @@
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
                         if (entry.target.id === 'about') {
-                            const cards = entry.target.querySelectorAll('.about-card');
-                            cards.forEach(card => {
-                                card.style.opacity = '0';
-                                card.style.transform = 'translateY(20px) scale(0.95)';
-                            });
-                            staggerAnimate(cards, 200);
+                            staggerAnimate(entry.target.querySelectorAll('.about-card'), 150);
                         } else if (entry.target.id === 'contact') {
-                            const methods = entry.target.querySelectorAll('.contact-method, .shipping-info');
-                            methods.forEach(method => {
-                                method.style.opacity = '0';
-                                method.style.transform = 'translateY(20px)';
-                            });
-                            staggerAnimate(methods, 200);
-                        } else if (entry.target.classList.contains('shipping-notice')) {
-                            const icon = entry.target.querySelector('i');
-                            if (icon) icon.style.animationPlayState = 'running';
+                            staggerAnimate(entry.target.querySelectorAll('.contact-method, .shipping-info'), 150);
                         }
                         observer.unobserve(entry.target);
                     }
@@ -1077,7 +924,7 @@
             lazySections.forEach(section => observer.observe(section));
         }
 
-        // Load Products with Enhanced Cards
+        // Load Products - Full Cards like Original
         function loadProducts() {
             const products = [
                 { name: "Toyota Supra Red & Subaru WRX STi Pink 2-Pack", imagePath: "images/product-1.jpg" },
@@ -1094,12 +941,10 @@
                 
                 products.forEach(product => {
                     const productCard = document.createElement('div');
-                    productCard.className = 'product-card'; 
-                    productCard.style.opacity = '0';
-                    productCard.style.transform = 'translateY(20px) scale(0.95)';
+                    productCard.className = 'product-card stagger-item'; 
                     productCard.innerHTML = `
                         <div class="image-container">
-                            <img src="${product.imagePath}" alt="${product.name}" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/400x300/D32F2F/FAFAFA?text=IMAGE+NOT+FOUND';">
+                            <img src="${product.imagePath}" alt="${product.name}" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/400x300/CC0000/FFFFFF?text=IMAGE+NOT+FOUND';">
                         </div>
                         <div class="product-info">
                             <h3>${product.name}</h3>
@@ -1110,9 +955,13 @@
                     productsContainer.appendChild(productCard);
                 });
                
-                // Stagger Animation
-                const cards = Array.from(productsContainer.children);
-                staggerAnimate(cards, 150);
+                // Stagger animation for cards
+                const originalCards = Array.from(productsContainer.children);
+                originalCards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add('animate');
+                    }, index * 100);
+                });
             }
         }
     </script>
