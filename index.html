@@ -11,32 +11,34 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
    
     <style>
-        /* BASE STYLES & VARIABLES */
+        /* BASE STYLES & VARIABLES - Enhanced for Modern Aesthetics */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         :root {
-            /* OFFICIAL COLORS */
-            --ferrari-red: #ED1C24;
-            --primary-yellow: #FFDD00; /* Deeper racing yellow for comfort */
-            --primary-black: #000000;
-            --accent-green: #009A4E;
-            --accent-white: #FFFFFF;
-            --dark-asphalt: #1A1A1A; /* Dark background for theme */
+            /* Refined Racing Palette - Softer, More Premium */
+            --ferrari-red: #D32F2F; /* Slightly softer red for better contrast */
+            --primary-yellow: #FDD835; /* Warmer yellow */
+            --primary-black: #121212; /* Deeper black for richness */
+            --accent-green: #388E3C; /* Muted green */
+            --accent-white: #FAFAFA; /* Off-white for warmth */
+            --dark-charcoal: #1E1E1E; /* Subtle variation from asphalt */
+            --gradient-bg: linear-gradient(135deg, #1E1E1E 0%, #2D2D2D 100%);
            
-            /* UI Effects */
-            --transition: all 0.3s ease;
-            --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.2);
-            --glow: 0 0 5px rgba(255, 242, 0, 0.6);
+            /* UI Enhancements */
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.3);
+            --glow: 0 0 8px rgba(253, 216, 53, 0.4);
+            --border-radius: 16px; /* Softer corners */
         }
         body {
-            font-family: 'Inter', 'Poppins', sans-serif;
-            background-color: var(--dark-asphalt); 
+            font-family: 'Inter', sans-serif;
+            background: var(--gradient-bg); 
             color: var(--accent-white); 
             overflow-x: hidden;
-            line-height: 1.6;
+            line-height: 1.7;
             -webkit-text-size-adjust: 100%;
             -webkit-tap-highlight-color: transparent;
             -webkit-font-smoothing: antialiased;
@@ -46,31 +48,41 @@
             width: 95%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 10px;
+            padding: 0 12px;
         }
        
         .section-title {
             font-family: 'Anton', sans-serif;
-            font-size: 2rem;
+            font-size: clamp(1.8rem, 5vw, 2.2rem);
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
             color: var(--ferrari-red); 
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-yellow);
+            margin: 10px auto 0;
+            border-radius: 2px;
         }
         
-        /* HEADER (Black Chrome Look) */
+        /* HEADER - Sleeker, More Minimal */
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(0, 0, 0, 0.95); 
-            padding: 15px 0;
+            background: rgba(18, 18, 18, 0.98); 
+            padding: 12px 0;
             transition: var(--transition);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); 
+            border-bottom: 1px solid rgba(250, 250, 250, 0.08);
+            backdrop-filter: blur(10px);
         }
         header .container {
             display: flex;
@@ -78,197 +90,219 @@
             align-items: center;
         }
        
-        /* Logo Animation (Italian Colors) - BOLD/THICKER OUTLINE */
-        @keyframes italianRacingOutline {
-            /* Using stacked shadows to create a thick, clear, 2px outline */
-            0% { 
+        /* Logo Animation - Smoother, Subtler Outline */
+        @keyframes subtleRacingGlow {
+            0%, 100% { 
                 text-shadow: 
-                    -2px -2px 0 var(--ferrari-red), 2px -2px 0 var(--ferrari-red), 
-                    -2px 2px 0 var(--ferrari-red), 2px 2px 0 var(--ferrari-red); 
+                    0 0 0 var(--ferrari-red),
+                    0 2px 4px rgba(0, 0, 0, 0.3);
             } 
-            33% { 
+            50% { 
                 text-shadow: 
-                    -2px -2px 0 var(--accent-white), 2px -2px 0 var(--accent-white), 
-                    -2px 2px 0 var(--accent-white), 2px 2px 0 var(--accent-white); 
-            } 
-            66% { 
-                text-shadow: 
-                    -2px -2px 0 var(--accent-green), 2px -2px 0 var(--accent-green), 
-                    -2px 2px 0 var(--accent-green), 2px 2px 0 var(--accent-green); 
-            } 
-            100% { 
-                text-shadow: 
-                    -2px -2px 0 var(--ferrari-red), 2px -2px 0 var(--ferrari-red), 
-                    -2px 2px 0 var(--ferrari-red), 2px 2px 0 var(--ferrari-red); 
+                    0 0 12px var(--primary-yellow),
+                    0 2px 4px rgba(0, 0, 0, 0.3);
             }
         }
 
-        /* Header Logo: White Text (Primary) on Dark Background */
         .logo h1 {
             font-family: 'Anton', sans-serif;
-            font-size: 1.5rem;
-            color: var(--accent-white); 
-            animation: italianRacingOutline 4s linear infinite;
+            font-size: clamp(1.4rem, 4vw, 1.6rem);
+            background: linear-gradient(45deg, var(--ferrari-red), var(--primary-yellow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: subtleRacingGlow 3s ease-in-out infinite;
         }
        
-        /* Mobile Navigation */
+        /* Mobile Navigation - Improved Dropdown */
         .nav-menu {
             display: none;
             position: absolute;
             top: 100%;
             left: 0;
             width: 100%;
-            background: rgba(26, 26, 26, 0.98); 
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            background: rgba(30, 30, 30, 0.99); 
+            border-top: 1px solid rgba(250, 250, 250, 0.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            border-radius: 0 0 16px 16px;
         }
         .nav-menu.active {
             display: block;
         }
+        .nav-menu ul {
+            list-style: none;
+            padding: 10px 0;
+        }
         .nav-menu ul li a {
+            display: block;
+            padding: 12px 20px;
             color: var(--accent-white); 
+            text-decoration: none;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
         }
         .nav-menu ul li a:hover,
         .nav-menu ul li a.active {
             color: var(--primary-yellow); 
-            text-shadow: var(--glow);
+            border-left-color: var(--primary-yellow);
+            background: rgba(253, 216, 53, 0.05);
+        }
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 25px;
+            height: 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
         }
         .hamburger span {
+            width: 100%;
+            height: 2px;
             background: var(--accent-white); 
+            transition: var(--transition);
+            border-radius: 1px;
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
         }
         
-        /* HERO SECTION (New Red Racing Stripes) */
+        /* HERO SECTION - Immersive with Gradient Overlay */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--primary-yellow); /* Yellow Base */
-            padding-top: 80px;
+            background: linear-gradient(135deg, var(--primary-yellow) 0%, #FFB300 100%);
+            padding-top: 70px;
             position: relative;
             overflow: hidden;
         }
         
-        /* Top Red Stripe */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 10px; /* Stripe Thickness */
-            background: var(--ferrari-red);
-            box-shadow: 0 0 10px rgba(237, 28, 36, 0.5); /* Subtle glow */
-            z-index: 1;
-        }
-        
-        /* Bottom Red Stripe */
+        /* Dynamic Stripes with Animation */
+        .hero::before,
         .hero::after {
             content: '';
             position: absolute;
-            bottom: 0;
             left: 0;
             width: 100%;
-            height: 10px; /* Stripe Thickness */
-            background: var(--ferrari-red);
-            box-shadow: 0 0 10px rgba(237, 28, 36, 0.5); /* Subtle glow */
+            height: 8px;
+            background: linear-gradient(90deg, var(--ferrari-red), transparent, var(--ferrari-red));
+            animation: stripePulse 2s ease-in-out infinite alternate;
             z-index: 1;
+        }
+        .hero::before { top: 0; }
+        .hero::after { bottom: 0; }
+        @keyframes stripePulse {
+            0% { opacity: 0.8; }
+            100% { opacity: 1; }
         }
         
         .hero-content {
             text-align: center;
-            z-index: 2; /* Ensures content is on top of stripes */
+            z-index: 2;
             padding: 0 20px;
             color: var(--primary-black); 
-            transform: none !important;
-            opacity: 1 !important;
         }
-        /* MAIN LOGO: Black Text (Primary) on Yellow Background */
         .metallic-logo h1 {
             font-family: 'Anton', sans-serif;
-            font-size: 2.8rem;
-            color: var(--primary-black); 
-            animation: italianRacingOutline 4s linear infinite;
-            /* Added depth for a premium look */
-            text-shadow: 
-                0px 0px 5px rgba(0, 0, 0, 0.2), 
-                -2px -2px 0px rgba(255, 255, 255, 0.5), 
-                2px 2px 0px rgba(0, 0, 0, 0.5); 
+            font-size: clamp(2.5rem, 8vw, 3.2rem);
+            background: linear-gradient(45deg, var(--primary-black), #333);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: subtleRacingGlow 3s ease-in-out infinite reverse;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
         .hero-content h2 {
-            font-size: 1.8rem;
+            font-size: clamp(1.5rem, 4vw, 1.9rem);
             margin-bottom: 1rem;
-            font-weight: 700;
+            font-weight: 500;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s ease forwards;
         }
         .hero-content p {
             font-size: 1.1rem;
-            margin-bottom: 2rem;
-            opacity: 1;
-            transform: translateY(0);
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s ease 0.2s forwards;
+        }
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
        
         .hero-buttons {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 16px;
             margin-top: 30px;
         }
-        .hero-buttons .btn {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        /* BUTTONS (Premium Bevel Look) */
+        /* BUTTONS - Elevated, Glassmorphic */
         .btn {
-            display: inline-block;
-            padding: 15px 25px;
-            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 16px 24px;
+            border-radius: var(--border-radius);
             text-decoration: none;
             font-weight: 600;
             font-size: 1rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             transition: var(--transition);
             box-shadow: 
-                0 4px 10px rgba(0, 0, 0, 0.3), 
-                inset 0 0 10px rgba(255, 255, 255, 0.1), 
-                inset 0 0 0 2px rgba(0, 0, 0, 0.1); 
-            border: none;
-            background: var(--accent-green);
+                0 6px 15px rgba(0, 0, 0, 0.2), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(56, 142, 60, 0.9);
             color: var(--accent-white);
             touch-action: manipulation;
             width: 100%;
-            max-width: 350px;
-            min-height: 48px;
+            min-height: 52px;
+            backdrop-filter: blur(10px);
         }
         .btn:hover,
         .btn:active {
-            transform: none;
-            background: #008040;
-            /* Red glow on hover/tap */
+            transform: translateY(-2px);
+            background: rgba(76, 175, 80, 0.95);
             box-shadow: 
-                0 8px 20px rgba(237, 28, 36, 0.4), 
-                inset 0 0 15px rgba(255, 255, 255, 0.2);
+                0 12px 30px rgba(237, 28, 36, 0.3), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
-        /* PRODUCTS CAROUSEL SECTION */
+        .btn i { font-size: 1.1rem; }
+        
+        /* PRODUCTS CAROUSEL - Smoother Scroll, Better Cards */
         .products {
-            padding: 60px 0;
-            background: var(--dark-asphalt); 
+            padding: 70px 0;
+            background: var(--dark-charcoal); 
             color: var(--accent-white);
         }
         .products-carousel-container {
             max-width: 100%;
-            overflow-x: scroll;
+            overflow-x: auto;
             -webkit-overflow-scrolling: touch;
             padding: 20px 0;
-            justify-content: flex-start;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
         }
-        /* Hide scrollbar on mobile devices (optional) */
         .products-carousel-container::-webkit-scrollbar {
             display: none;
-        }
-        .products-carousel-container {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
         }
 
         .products-carousel {
@@ -277,138 +311,309 @@
             padding: 0 10px;
         }
         .product-card {
-            background: rgba(255, 255, 255, 0.05); 
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08); 
+            border-radius: var(--border-radius);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             flex-shrink: 0;
             width: 85vw;
-            max-width: 350px;
-            transform: none !important;
-            transition: box-shadow 0.3s ease;
+            max-width: 360px;
+            transition: var(--transition);
+            scroll-snap-align: start;
+            overflow: hidden;
         }
         .product-card:hover,
         .product-card:active {
-            transform: none;
+            transform: scale(1.02);
             box-shadow: var(--shadow-hover);
         }
        
         .product-card .image-container {
-            height: 200px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 10px 10px 0 0;
+            height: 220px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.1));
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+            overflow: hidden;
+            position: relative;
         }
         .product-card img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        .product-card:hover img {
+            transform: scale(1.05);
         }
         .product-info {
-            padding: 15px;
-            gap: 8px;
+            padding: 20px;
+            gap: 10px;
         }
         .product-info h3 {
-             color: var(--accent-white);
+            color: var(--accent-white);
+            font-family: 'Anton', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
         }
         .product-info p {
-             color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+        .product-info .btn {
+            width: auto;
+            padding: 12px 18px;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            background: rgba(253, 216, 53, 0.9);
+            color: var(--primary-black);
+        }
+        .product-info .btn:hover {
+            background: rgba(253, 216, 53, 1);
+            color: var(--primary-black);
         }
         .products-carousel-nav {
             display: none;
         }
-        .product-card.stagger-item.animate {
+        .product-card.animate {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
         }
-        /* Themed Section (About/Contact) */
-        .themed-section {
-            padding: 60px 0;
-            background-color: var(--ferrari-red); 
-            color: var(--accent-white);
-        }
-        .themed-section .section-title {
-            color: var(--primary-yellow);
-        }
-        .about-grid {
-            flex-direction: column;
-            gap: 20px !important;
-        }
-        .about-card {
-            padding: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            background: rgba(0, 0, 0, 0.2); 
-        }
-
-        /* Shipping Notice Styles */
+        
+        /* SHIPPING NOTICE - More Visual */
         .shipping-notice {
-            padding: 40px 0;
-            background: var(--dark-asphalt);
+            padding: 60px 0;
+            background: linear-gradient(135deg, var(--dark-charcoal), #2D2D2D);
             color: var(--accent-white);
             text-align: center;
         }
         .shipping-notice .notice-content {
             flex-direction: column;
             text-align: center;
-            gap: 15px;
+            gap: 20px;
         }
         .shipping-notice h3 {
-            font-size: 1.4rem;
-            color: var(--ferrari-red); 
+            font-size: 1.5rem;
+            color: var(--primary-yellow); 
+            font-family: 'Anton', sans-serif;
+            margin-bottom: 10px;
         }
         .shipping-notice i {
-            font-size: 2.5rem !important;
+            font-size: 3rem;
+            color: var(--primary-yellow);
+            margin-bottom: 15px;
+            animation: bounce 2s infinite;
         }
-        /* Footer Styles (Engine Bay Detail) */
-        footer {
-            background: var(--primary-black);
-            /* Brushed metal effect using gradients */
-            background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.05) 50%, transparent 50%),
-                              linear-gradient(90deg, rgba(255, 255, 255, 0.05) 50%, transparent 50%);
-            background-size: 5px 5px; 
-            /* The Red Line: Structural Accent */
-            border-top: 5px solid var(--ferrari-red); 
-            padding: 30px 0 20px;
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        .shipping-notice p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        /* THEMED SECTIONS - Gradient Backgrounds */
+        .themed-section {
+            padding: 70px 0;
+            background: linear-gradient(135deg, var(--ferrari-red), #B71C1C);
             color: var(--accent-white);
+            position: relative;
         }
-        footer .footer-content {
-            flex-direction: column;
-            gap: 20px;
-            text-align: center;
-            margin-bottom: 20px;
+        .themed-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.05"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            pointer-events: none;
         }
-        footer .footer-links a {
-            margin: 0 8px;
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
+        .themed-section .section-title {
+            color: var(--primary-yellow);
+            position: relative;
+            z-index: 1;
         }
-        .social-icons {
-            margin-top: 10px;
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
         }
-        .social-icons a {
-            font-size: 1.3rem;
-            margin: 0 5px;
+        .about-card {
+            padding: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: var(--border-radius);
+            background: rgba(0, 0, 0, 0.3); 
+            transition: var(--transition);
+            position: relative;
+            z-index: 1;
+        }
+        .about-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        .about-card h3 {
+            font-family: 'Anton', sans-serif;
+            margin-bottom: 12px;
+            font-size: 1.4rem;
             color: var(--primary-yellow);
         }
-        .copyright {
-            padding-top: 15px;
-            color: rgba(255, 255, 255, 0.5);
-        }
 
-        /* CONTACT SECTION Mobile adjustments */
+        /* CONTACT - Enhanced Layout */
+        .contact-content {
+            display: flex;
+            justify-content: center;
+        }
+        .contact-info {
+            max-width: 500px;
+            width: 100%;
+        }
         .contact-method {
             display: flex;
             align-items: flex-start;
-            gap: 15px;
-            margin-bottom: 20px;
-            padding: 10px;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+            gap: 16px;
+            margin-bottom: 24px;
+            padding: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            background: rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+        .contact-method:hover {
+            border-color: var(--primary-yellow);
+            background: rgba(253, 216, 53, 0.05);
+        }
+        .contact-method i {
+            font-size: 1.8rem;
+            color: var(--primary-yellow);
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .contact-method h4 {
+            font-family: 'Anton', sans-serif;
+            margin-bottom: 6px;
+            font-size: 1.2rem;
+        }
+        .contact-method a {
+            text-decoration: none;
+            color: var(--primary-yellow);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        .contact-method p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 4px;
         }
         .shipping-info {
-            padding: 15px 0;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            background: rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+        .shipping-info h3 {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: var(--primary-yellow);
         }
         .shipping-info p {
             font-size: 1rem !important;
+            line-height: 1.6;
+        }
+        .shipping-info i {
+            color: var(--accent-green);
+            margin-right: 8px;
+        }
+        
+        /* FOOTER - Richer Texture */
+        footer {
+            background: var(--primary-black);
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(253, 216, 53, 0.05) 0%, transparent 50%),
+                linear-gradient(90deg, rgba(211, 47, 47, 0.03) 0%, transparent 50%, rgba(211, 47, 47, 0.03) 100%);
+            border-top: 4px solid var(--ferrari-red); 
+            padding: 40px 0 20px;
+            color: var(--accent-white);
+            position: relative;
+        }
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="metal" width="50" height="50" patternUnits="userSpaceOnUse"><line x1="0" y1="25" x2="50" y2="25" stroke="rgba(255,255,255,0.02)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23metal)"/></svg>');
+        }
+        footer .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        .footer-logo h2 {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.6rem;
+            background: linear-gradient(45deg, var(--primary-yellow), var(--ferrari-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 4px;
+        }
+        .footer-logo p {
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .footer-links a {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .footer-links a:hover {
+            color: var(--primary-yellow);
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+        .social-icons a {
+            font-size: 1.4rem;
+            color: var(--primary-yellow);
+            transition: var(--transition);
+        }
+        .social-icons a:hover {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 8px var(--glow));
+        }
+        .copyright {
+            padding-top: 20px;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.8rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* RESPONSIVE ENHANCEMENTS - Already Mobile-First */
+        @media (max-width: 480px) {
+            .hero-buttons { gap: 12px; }
+            .product-info { padding: 16px; }
+            .about-card { padding: 20px; }
         }
     </style>
 </head>
@@ -447,14 +652,13 @@
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLScnc27rN3eldGOX53XWCs8aPOtrRoOGgNQKL2i4i18ElPrdjQ/viewform?usp=header" target="_blank" class="btn"><i class="fas fa-shopping-cart"></i> Order Now</a>
             </div>
         </div>
-        <div class="hero-overlay"></div>
     </section>
     <section id="products" class="products lazy-section">
         <div class="container">
             <h2 class="section-title">Hot Wheels Collection</h2>
             <div class="products-carousel-container">
                 <div class="products-carousel" id="productsContainer">
-                    </div>
+                </div>
             </div>
             <p style="text-align: center; margin-top: 20px; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">&larr; **Scroll horizontally to view more products** &rarr;</p>
         </div>
@@ -462,7 +666,7 @@
     <section class="shipping-notice lazy-section">
         <div class="container">
             <div class="notice-content">
-                <i class="fas fa-truck" style="color: var(--primary-yellow);"></i>
+                <i class="fas fa-truck"></i>
                 <div>
                     <h3>India-Wide Delivery</h3>
                     <p>Shipping charges vary by location. Fast and reliable delivery across India.</p>
@@ -474,24 +678,24 @@
         <div class="container">
             <div class="about-content">
                 <h2 class="section-title">Our Story</h2>
-                <p style="font-size: 1.1rem; line-height: 1.6; margin: 0 auto 30px; text-align: center;">
+                <p style="font-size: 1.1rem; line-height: 1.7; margin: 0 auto 35px; text-align: center; max-width: 800px; opacity: 0.95;">
                     Founded with a passion for precision engineering and automotive excellence, **Cars Mainly** has become the premier destination for Hot Wheels enthusiasts in India. Our journey began with a simple vision: to bring the thrill of collecting and playing with premium die-cast vehicles to fans across the nation.
                 </p>
                
                 <div class="about-grid">
                     <div class="about-card">
-                        <h3 style="font-family: 'Anton', sans-serif; margin-bottom: 10px; font-size: 1.5rem; color: var(--primary-yellow);">Our Mission</h3>
-                        <p style="font-size: 1rem;">To provide collectors and enthusiasts with authentic, high-quality Hot Wheels products while fostering a community that celebrates automotive culture and craftsmanship.</p>
+                        <h3>Our Mission</h3>
+                        <p>To provide collectors and enthusiasts with authentic, high-quality Hot Wheels products while fostering a community that celebrates automotive culture and craftsmanship.</p>
                     </div>
                    
                     <div class="about-card">
-                        <h3 style="font-family: 'Anton', sans-serif; margin-bottom: 10px; font-size: 1.5rem; color: var(--primary-yellow);">Quality Assurance</h3>
-                        <p style="font-size: 1rem;">Every product in our collection undergoes rigorous quality checks to ensure authenticity and premium craftsmanship that meets the standards of discerning collectors.</p>
+                        <h3>Quality Assurance</h3>
+                        <p>Every product in our collection undergoes rigorous quality checks to ensure authenticity and premium craftsmanship that meets the standards of discerning collectors.</p>
                     </div>
                    
                     <div class="about-card">
-                        <h3 style="font-family: 'Anton', sans-serif; margin-bottom: 10px; font-size: 1.5rem; color: var(--primary-yellow);">Community Focus</h3>
-                        <p style="font-size: 1rem;">We're more than just a retailer - we're building a vibrant community of Hot Wheels enthusiasts through events, collaborations, and shared experiences.</p>
+                        <h3>Community Focus</h3>
+                        <p>We're more than just a retailer - we're building a vibrant community of Hot Wheels enthusiasts through events, collaborations, and shared experiences.</p>
                     </div>
                 </div>
             </div>
@@ -500,31 +704,31 @@
     <section id="contact" class="themed-section lazy-section">
         <div class="container">
             <h2 class="section-title">Reach Out to Us</h2>
-            <div class="contact-content" style="display: flex; justify-content: center;">
-                <div class="contact-info" style="max-width: 500px; width: 100%;">
+            <div class="contact-content">
+                <div class="contact-info">
                    
                     <div class="contact-method">
-                        <i class="fab fa-instagram" style="font-size: 1.8rem; margin-right: 10px; color: var(--primary-yellow);"></i>
+                        <i class="fab fa-instagram"></i>
                         <div>
-                            <h4 style="font-family: 'Anton', sans-serif; margin-bottom: 5px; font-size: 1.2rem;">Instagram</h4>
-                            <a href="https://www.instagram.com/carsmainly" target="_blank" style="text-decoration: none; font-size: 1rem; color: var(--primary-yellow);">@carsmainly</a>
-                            <p style="margin-top: 5px; font-size: 0.9rem;">Check live stock updates and latest arrivals</p>
+                            <h4>Instagram</h4>
+                            <a href="https://www.instagram.com/carsmainly" target="_blank">@carsmainly</a>
+                            <p>Check live stock updates and latest arrivals</p>
                         </div>
                     </div>
                    
                     <div class="contact-method">
-                        <i class="fas fa-envelope" style="font-size: 1.8rem; margin-right: 10px; color: var(--primary-yellow);"></i>
+                        <i class="fas fa-envelope"></i>
                         <div>
-                            <h4 style="font-family: 'Anton', sans-serif; margin-bottom: 5px; font-size: 1.2rem;">Email</h4>
-                            <p style="font-size: 1rem;">Coming Soon</p>
-                            <p style="margin-top: 5px; font-size: 0.9rem;">General inquiries and support</p>
+                            <h4>Email</h4>
+                            <p>Coming Soon</p>
+                            <p>General inquiries and support</p>
                         </div>
                     </div>
                    
                     <div class="shipping-info">
-                        <h3 style="font-family: 'Anton', sans-serif; font-size: 1.4rem; margin-bottom: 15px; text-align: center; color: var(--primary-yellow);">Shipping Information</h3>
-                        <p style="text-align: center; font-size: 1rem; line-height: 1.5;">
-                            <i class="fas fa-truck" style="color: var(--accent-green); margin-right: 8px;"></i>
+                        <h3>Shipping Information</h3>
+                        <p>
+                            <i class="fas fa-truck"></i>
                             We deliver across India with variable shipping charges based on location.
                         </p>
                     </div>
@@ -536,8 +740,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <h2 style="font-family: 'Anton', sans-serif; font-size: 1.5rem;">CARS MAINLY</h2>
-                    <p style="font-size: 0.8rem;">Premium Hot Wheels Collection</p>
+                    <h2>CARS MAINLY</h2>
+                    <p>Premium Hot Wheels Collection</p>
                 </div>
                 <div class="footer-links">
                     <a href="#home">Home</a>
@@ -555,7 +759,7 @@
         </div>
     </footer>
     <script>
-        // Debounce utility for performance
+        // Enhanced Debounce and Animations
         function debounce(func, wait) {
             let timeout;
             return function executedFunction(...args) {
@@ -568,11 +772,11 @@
             };
         }
 
-        // Stagger animation function
-        function staggerAnimate(elements, delay = 150) {
+        function staggerAnimate(elements, delay = 200) {
             elements.forEach((el, index) => {
                 setTimeout(() => {
-                    el.classList.add('animate');
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0) scale(1)';
                 }, index * delay);
             });
         }
@@ -581,46 +785,45 @@
             const hamburger = document.getElementById('hamburger');
             const navMenu = document.getElementById('navMenu');
             
-            // Hamburger Menu Toggle
+            // Improved Hamburger Toggle
             hamburger.addEventListener('click', () => {
                 const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
                 hamburger.setAttribute('aria-expanded', !isExpanded);
                 navMenu.classList.toggle('active');
+                hamburger.classList.toggle('active');
             });
            
-            // Nav links: smooth scroll, active class, close mobile
+            // Nav Links - Smooth Scroll with Active States
             document.querySelectorAll('#navMenu a[href^="#"]').forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
                     const targetId = link.getAttribute('href');
                     const target = document.querySelector(targetId);
                     if (target) {
-                        // Offset reduced for mobile header size
                         const offsetTop = target.getBoundingClientRect().top + window.pageYOffset - 70; 
                         window.scrollTo({
                             top: offsetTop,
                             behavior: 'smooth'
                         });
                     }
-                    // Active class
                     document.querySelectorAll('#navMenu a').forEach(a => a.classList.remove('active'));
                     link.classList.add('active');
-                    // Close mobile menu
                     if (navMenu.classList.contains('active')) {
                         hamburger.setAttribute('aria-expanded', 'false');
                         navMenu.classList.remove('active');
+                        hamburger.classList.remove('active');
                     }
                 });
             });
            
-            // Dynamic copyright year
+            // Dynamic Copyright
             const copyright = document.getElementById('copyright-text');
             if (copyright) {
                 const currentYear = new Date().getFullYear();
                 copyright.innerHTML = `&copy; ${currentYear} Cars Mainly. All rights reserved.`;
             }
            
-            // Hero typewriter animation (Modified for faster mobile load)
+            // Refined Hero Typewriter - Smoother
             const heroH2 = document.querySelector('.hero-content h2');
             const heroP = document.querySelector('.hero-content p');
             const heroBtns = document.querySelectorAll('.hero-buttons .btn');
@@ -632,31 +835,27 @@
                     if (i < text.length) {
                         heroH2.innerHTML += text.charAt(i);
                         i++;
-                        setTimeout(typeWriter, 50 + Math.random() * 20); // Faster typing
+                        setTimeout(typeWriter, 60 + Math.random() * 30);
                     } else {
-                        heroH2.classList.remove('typing');
-                        // Animate p (Quickly visible on mobile)
-                        setTimeout(() => {
-                            heroP.classList.add('animate');
-                            // Animate buttons (Quickly visible on mobile)
-                            setTimeout(() => {
-                                heroBtns.forEach((btn, index) => {
-                                    setTimeout(() => btn.classList.add('animate'), index * 100); // Faster stagger
-                                });
-                            }, 100);
-                        }, 200);
+                        // Trigger fade-up animations
+                        heroP.style.animationDelay = '0.3s';
+                        heroP.style.animation = 'fadeUp 0.8s ease forwards';
+                        heroBtns.forEach((btn, index) => {
+                            btn.style.animationDelay = `${0.5 + index * 0.1}s`;
+                            btn.style.animation = 'fadeUp 0.8s ease forwards';
+                        });
                     }
                 }
-                setTimeout(typeWriter, 300); // Faster start
+                setTimeout(typeWriter, 400);
             }
            
-            // Load products
+            // Load Products
             loadProducts();
            
-            // Lazy loading for sections
+            // Enhanced Lazy Loading
             initLazySections();
            
-            // Prevent double-tap zoom (retained for good UX)
+            // Prevent Zoom on Double-Tap
             let lastTouchEnd = 0;
             document.addEventListener('touchend', (event) => {
                 const now = new Date().getTime();
@@ -666,33 +865,45 @@
                 lastTouchEnd = now;
             }, { passive: true });
 
-             // Add event listener to scroll the carousel
+            // Carousel Snap Enhancement
             const productsContainer = document.getElementById('productsContainer');
             if (productsContainer) {
-                // Ensure initial scroll to show the first full card correctly
-                setTimeout(() => {
-                    productsContainer.scrollLeft = 0;
-                }, 10);
+                productsContainer.addEventListener('scroll', debounce(() => {
+                    const cards = productsContainer.querySelectorAll('.product-card');
+                    cards.forEach(card => card.style.transform = 'scale(1)');
+                }, 100));
             }
         });
 
-        // Lazy Sections Observer
+        // Lazy Sections with Intersection Observer
         function initLazySections() {
             const lazySections = document.querySelectorAll('.lazy-section');
             const observerOptions = {
                 root: null,
-                rootMargin: '0px 0px -50px 0px',
+                rootMargin: '0px 0px -100px 0px',
                 threshold: 0.1
             };
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        // Stagger children with faster delay
                         if (entry.target.id === 'about') {
-                            staggerAnimate(entry.target.querySelectorAll('.about-card'), 150);
+                            const cards = entry.target.querySelectorAll('.about-card');
+                            cards.forEach(card => {
+                                card.style.opacity = '0';
+                                card.style.transform = 'translateY(20px) scale(0.95)';
+                            });
+                            staggerAnimate(cards, 200);
                         } else if (entry.target.id === 'contact') {
-                            staggerAnimate(entry.target.querySelectorAll('.contact-method, .shipping-info'), 150);
+                            const methods = entry.target.querySelectorAll('.contact-method, .shipping-info');
+                            methods.forEach(method => {
+                                method.style.opacity = '0';
+                                method.style.transform = 'translateY(20px)';
+                            });
+                            staggerAnimate(methods, 200);
+                        } else if (entry.target.classList.contains('shipping-notice')) {
+                            const icon = entry.target.querySelector('i');
+                            if (icon) icon.style.animationPlayState = 'running';
                         }
                         observer.unobserve(entry.target);
                     }
@@ -701,7 +912,7 @@
             lazySections.forEach(section => observer.observe(section));
         }
 
-        // Load Products with stagger (Names and paths remain consistent)
+        // Load Products with Enhanced Cards
         function loadProducts() {
             const products = [
                 { name: "Toyota Supra Red & Subaru WRX STi Pink 2-Pack", imagePath: "images/product-1.jpg" },
@@ -718,29 +929,25 @@
                 
                 products.forEach(product => {
                     const productCard = document.createElement('div');
-                    productCard.className = 'product-card stagger-item'; 
+                    productCard.className = 'product-card'; 
+                    productCard.style.opacity = '0';
+                    productCard.style.transform = 'translateY(20px) scale(0.95)';
                     productCard.innerHTML = `
                         <div class="image-container">
-                            <img src="${product.imagePath}" alt="${product.name}" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/400x300/ED1C24/fff?text=IMAGE+NOT+FOUND';">
+                            <img src="${product.imagePath}" alt="${product.name}" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/400x300/D32F2F/FAFAFA?text=IMAGE+NOT+FOUND';">
                         </div>
                         <div class="product-info">
-                            <h3 style="font-family: 'Anton', sans-serif; font-size: 1.1rem; color: var(--accent-white); margin-bottom: 5px; flex-grow: 1;">${product.name}</h3>
-                            <p style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.7);">Premium Die-Cast Model</p>
-                            <a href="https://www.instagram.com/carsmainly" target="_blank" class="btn" style="padding: 10px 15px; font-size: 0.8rem; border-radius: 20px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); width: auto; max-width: 150px; min-height: 36px; margin: 0 auto;">
-                                <i class="fab fa-instagram"></i> Inquire / Buy
-                            </a>
+                            <h3>${product.name}</h3>
+                            <p>Premium Die-Cast Model</p>
+                            <a href="https://www.instagram.com/carsmainly" target="_blank" class="btn"><i class="fab fa-instagram"></i> Inquire / Buy</a>
                         </div>
                     `;
                     productsContainer.appendChild(productCard);
                 });
                
-                // Stagger animation for originals
-                const originalCards = Array.from(productsContainer.children);
-                originalCards.forEach((card, index) => {
-                    setTimeout(() => {
-                        card.classList.add('animate');
-                    }, index * 100); // Faster stagger
-                });
+                // Stagger Animation
+                const cards = Array.from(productsContainer.children);
+                staggerAnimate(cards, 150);
             }
         }
     </script>
