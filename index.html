@@ -20,13 +20,13 @@
         :root {
             /* OFFICIAL COLORS */
             --ferrari-red: #ED1C24;
-            --primary-yellow: #FFF200;
+            --primary-yellow: #FFDD00; /* Adjusted Yellow: Deeper and less harsh */
             --primary-black: #000000;
             --accent-green: #009A4E;
             --accent-white: #FFFFFF;
-            --dark-asphalt: #1A1A1A; /* New dark background for theme */
+            --dark-asphalt: #1A1A1A; /* Dark background for theme */
            
-            /* Glassmorphism/UI Effects (MINIMAL FOR MOBILE) */
+            /* UI Effects */
             --glass-bg: rgba(255, 255, 255, 0.95);
             --glass-border: rgba(255, 255, 255, 0.2);
             --glass-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -36,8 +36,8 @@
         }
         body {
             font-family: 'Inter', 'Poppins', sans-serif;
-            background-color: var(--dark-asphalt); /* Dark Asphalt Background (Idea #3) */
-            color: var(--accent-white); /* Default text color is white on dark background */
+            background-color: var(--dark-asphalt); /* Dark Asphalt Background */
+            color: var(--accent-white); 
             overflow-x: hidden;
             line-height: 1.6;
             background-image: none;
@@ -58,12 +58,12 @@
             font-size: 2rem;
             text-align: center;
             margin-bottom: 30px;
-            color: var(--ferrari-red); /* Red Titles on Dark Background */
+            color: var(--ferrari-red); 
             text-transform: uppercase;
             letter-spacing: 1px;
         }
         
-        /* HEADER (Black Chrome Look - Idea #1) */
+        /* HEADER (Black Chrome Look) */
         header {
             position: fixed;
             top: 0;
@@ -82,20 +82,40 @@
             align-items: center;
         }
        
-        /* Logo Animation (Italian Colors) */
+        /* Logo Animation (Italian Colors) - THICKER OUTLINE */
         @keyframes italianRacingOutline {
-            /* Base black for depth/shadow, alternating color for outline */
-            0% { text-shadow: 1px 1px 0 var(--primary-black), -1px -1px 0 var(--ferrari-red); } 
-            33% { text-shadow: 1px 1px 0 var(--primary-black), -1px -1px 0 var(--accent-white); } 
-            66% { text-shadow: 1px 1px 0 var(--primary-black), -1px -1px 0 var(--accent-green); } 
-            100% { text-shadow: 1px 1px 0 var(--primary-black), -1px -1px 0 var(--ferrari-red); }
+            /* Using multiple shadows to create a thicker, bolder outline (2px offset + 2px blur) */
+            0% { 
+                text-shadow: 
+                    2px 2px 0 var(--primary-black), /* Main text shadow */
+                    -2px -2px 2px var(--ferrari-red), /* Thicker colored shadow 1 */
+                    2px 2px 2px var(--ferrari-red); /* Thicker colored shadow 2 */
+            } 
+            33% { 
+                text-shadow: 
+                    2px 2px 0 var(--primary-black), 
+                    -2px -2px 2px var(--accent-white), 
+                    2px 2px 2px var(--accent-white); 
+            } 
+            66% { 
+                text-shadow: 
+                    2px 2px 0 var(--primary-black), 
+                    -2px -2px 2px var(--accent-green), 
+                    2px 2px 2px var(--accent-green); 
+            } 
+            100% { 
+                text-shadow: 
+                    2px 2px 0 var(--primary-black), 
+                    -2px -2px 2px var(--ferrari-red), 
+                    2px 2px 2px var(--ferrari-red); 
+            }
         }
 
-        /* Header Logo (White text on dark header) */
+        /* Header Logo */
         .logo h1 {
             font-family: 'Anton', sans-serif;
             font-size: 1.5rem;
-            color: var(--accent-white); /* White on dark header */
+            color: var(--accent-white); 
             animation: italianRacingOutline 4s linear infinite;
         }
        
@@ -106,7 +126,7 @@
             top: 100%;
             left: 0;
             width: 100%;
-            background: rgba(26, 26, 26, 0.98); /* Dark menu background */
+            background: rgba(26, 26, 26, 0.98); 
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
         }
@@ -119,46 +139,19 @@
             padding: 10px 0;
             list-style: none;
         }
-        .nav-menu ul li {
-            margin: 10px 0;
-            width: 100%;
-            text-align: center;
-        }
         .nav-menu ul li a {
-            color: var(--accent-white); /* White links on dark menu */
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1.1rem;
-            display: block;
-            padding: 10px 0;
+            color: var(--accent-white); 
         }
         .nav-menu ul li a:hover,
         .nav-menu ul li a.active {
-            color: var(--primary-yellow); /* Yellow highlight */
+            color: var(--primary-yellow); 
             text-shadow: var(--glow);
         }
-        .hamburger {
-            display: flex;
-            flex-direction: column;
-            cursor: pointer;
-            z-index: 1001;
-            background: none;
-            border: none;
-            padding: 5px;
-            min-height: 44px;
-            min-width: 44px;
-            align-items: center;
-            justify-content: center;
-        }
         .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: var(--accent-white); /* White hamburger lines on dark header */
-            margin: 3px 0;
-            transition: all 0.3s ease;
+            background: var(--accent-white); 
         }
         
-        /* Revving V-Grid Scroll Animation (Idea #1) */
+        /* Revving V-Grid Scroll Animation */
         @keyframes vGridScroll {
             0% { background-position: 0 0; }
             100% { background-position: 200px 200px; }
@@ -170,7 +163,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--primary-yellow); /* Base Yellow */
+            background: var(--primary-yellow); /* Adjusted Yellow Base */
             padding-top: 80px;
             position: relative;
             overflow: hidden;
@@ -183,11 +176,11 @@
             left: 0;
             width: 200%;
             height: 200%;
-            /* Repeating, very faint diagonal red stripe pattern */
+            /* Faint but Visible Red Stripe Pattern */
             background-image: repeating-linear-gradient(
                 -45deg,
-                rgba(237, 28, 36, 0.08) 0px, /* Faint Ferrari Red */
-                rgba(237, 28, 36, 0.08) 10px, 
+                rgba(237, 28, 36, 0.20) 0px, 
+                rgba(237, 28, 36, 0.20) 10px, 
                 transparent 10px,
                 transparent 20px
             );
@@ -201,19 +194,19 @@
 
         .hero-content {
             text-align: center;
-            z-index: 2; /* Ensures content is on top of the V-Grid */
+            z-index: 2; 
             padding: 0 20px;
-            color: var(--primary-black); /* Black text on yellow background */
+            color: var(--primary-black); 
             transform: none !important;
             opacity: 1 !important;
         }
-        /* MAIN LOGO STYLED FOR ITALIAN RACING COLORS */
+        /* MAIN LOGO */
         .metallic-logo h1 {
             font-family: 'Anton', sans-serif;
             font-size: 2.8rem;
-            color: var(--primary-black); /* Black text on yellow hero */
+            color: var(--primary-black); 
             animation: italianRacingOutline 4s linear infinite;
-            /* Simulating metallic depth on black logo text (Idea #1 Aesthetic) */
+            /* Simulating metallic depth on black logo text */
             text-shadow: 
                 0px 0px 5px rgba(0, 0, 0, 0.2), 
                 -2px -2px 0px rgba(255, 255, 255, 0.5), 
@@ -241,7 +234,7 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* BUTTONS (Premium Bevel Look - Idea #1) */
+        /* BUTTONS (Premium Bevel Look) */
         .btn {
             display: inline-block;
             padding: 15px 25px;
@@ -253,9 +246,9 @@
             letter-spacing: 1px;
             transition: var(--transition);
             box-shadow: 
-                0 4px 10px rgba(0, 0, 0, 0.3), /* Outer shadow */
-                inset 0 0 10px rgba(255, 255, 255, 0.1), /* Inner light glow */
-                inset 0 0 0 2px rgba(0, 0, 0, 0.1); /* Inner dark border */
+                0 4px 10px rgba(0, 0, 0, 0.3), 
+                inset 0 0 10px rgba(255, 255, 255, 0.1), 
+                inset 0 0 0 2px rgba(0, 0, 0, 0.1); 
             border: none;
             background: var(--accent-green);
             color: var(--accent-white);
@@ -276,7 +269,7 @@
         /* PRODUCTS CAROUSEL SECTION */
         .products {
             padding: 60px 0;
-            background: var(--dark-asphalt); /* Dark Asphalt */
+            background: var(--dark-asphalt); 
             color: var(--accent-white);
         }
         .products-carousel-container {
@@ -301,7 +294,7 @@
             padding: 0 10px;
         }
         .product-card {
-            background: rgba(255, 255, 255, 0.05); /* Darker card background */
+            background: rgba(255, 255, 255, 0.05); 
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -347,7 +340,7 @@
         /* Themed Section (About/Contact) */
         .themed-section {
             padding: 60px 0;
-            background-color: var(--ferrari-red); /* High-contrast Red Section */
+            background-color: var(--ferrari-red); 
             color: var(--accent-white);
         }
         .themed-section .section-title {
@@ -361,7 +354,7 @@
             padding: 15px;
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 10px;
-            background: rgba(0, 0, 0, 0.2); /* Black/darker background on red */
+            background: rgba(0, 0, 0, 0.2); 
         }
 
         /* Shipping Notice Styles */
@@ -378,18 +371,18 @@
         }
         .shipping-notice h3 {
             font-size: 1.4rem;
-            color: var(--ferrari-red); /* Red highlight */
+            color: var(--ferrari-red); 
         }
         .shipping-notice i {
             font-size: 2.5rem !important;
         }
-        /* Footer Styles (Engine Bay Detail - Idea #3) */
+        /* Footer Styles (Engine Bay Detail) */
         footer {
             background: var(--primary-black);
             /* Brushed metal effect using gradients */
             background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.05) 50%, transparent 50%),
                               linear-gradient(90deg, rgba(255, 255, 255, 0.05) 50%, transparent 50%);
-            background-size: 5px 5px; /* Fine texture */
+            background-size: 5px 5px; 
             /* The Red Line: Structural Accent */
             border-top: 5px solid var(--ferrari-red); 
             padding: 30px 0 20px;
