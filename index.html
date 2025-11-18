@@ -25,6 +25,7 @@
             --ferrari-white: #FFFFFF;
             --ferrari-grey: #A6A6A6;
             --ferrari-dark: #1A1A1A;
+            --ferrari-green: #006633; /* Green accents */
             --gradient-bg: linear-gradient(135deg, var(--ferrari-dark) 0%, #2A2A2A 100%);
            
             /* UI Enhancements - Ferrari Shield Motifs */
@@ -110,16 +111,136 @@
             align-items: center;
         }
        
-        /* Static Logo - Ferrari Inspired Gradient */
+        /* Enhanced Dynamic Prancing Horse Icon with Continuous Animation */
+        .logo {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .logo i {
+            font-size: clamp(1.4rem, 4vw, 1.6rem);
+            color: var(--ferrari-green);
+            margin-right: 10px;
+            text-shadow: 
+                0 0 12px rgba(0, 102, 51, 0.7), /* Enhanced green glow */
+                2px 2px 6px rgba(0, 0, 0, 0.8);
+            transition: var(--transition);
+            position: relative;
+            z-index: 2;
+            transform-origin: bottom center;
+            animation: continuousPrance 4s ease-in-out infinite;
+        }
+        .logo i::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            background: radial-gradient(circle, var(--ferrari-yellow) 0%, transparent 70%);
+            border-radius: 50%;
+            opacity: 0.2;
+            transition: var(--transition);
+            z-index: -1;
+            filter: blur(6px);
+            animation: continuousGlow 4s ease-in-out infinite;
+        }
+        .logo:hover i {
+            animation-duration: 0.8s;
+        }
+        @keyframes continuousPrance {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+            25% {
+                transform: translateY(-2px) rotate(-2deg) scale(1.02);
+            }
+            50% {
+                transform: translateY(-4px) rotate(-5deg) scale(1.05);
+            }
+            75% {
+                transform: translateY(-1px) rotate(1deg) scale(1.01);
+            }
+        }
+        @keyframes continuousGlow {
+            0%, 100% {
+                opacity: 0.2;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.4;
+                transform: scale(1.05);
+            }
+        }
+        .logo:hover i {
+            animation: prance 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+        .logo:hover i::before {
+            opacity: 0.4;
+            animation: pulseGlow 1.5s ease-in-out infinite;
+        }
+        @keyframes prance {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+            20% {
+                transform: translateY(-6px) rotate(-8deg) scale(1.05);
+            }
+            40% {
+                transform: translateY(-12px) rotate(-15deg) scale(1.1);
+            }
+            60% {
+                transform: translateY(-8px) rotate(-5deg) scale(1.05);
+            }
+            80% {
+                transform: translateY(-4px) rotate(5deg) scale(1.02);
+            }
+            100% {
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+        }
+        @keyframes pulseGlow {
+            0%, 100% {
+                opacity: 0.4;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.6;
+                transform: scale(1.1);
+            }
+        }
         .logo h1 {
             font-family: 'Anton', sans-serif;
             font-size: clamp(1.4rem, 4vw, 1.6rem);
-            background: linear-gradient(135deg, var(--ferrari-red) 0%, var(--ferrari-yellow) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+            color: var(--ferrari-white);
+            text-shadow: 
+                0 0 10px rgba(0, 102, 51, 0.5), /* Green glow accent */
+                2px 2px 4px rgba(0, 0, 0, 0.8);
             letter-spacing: 2px;
+            position: relative;
+            margin: 0;
+            transition: var(--transition);
+        }
+        .logo:hover h1 {
+            text-shadow: 
+                0 0 15px rgba(0, 102, 51, 0.7),
+                2px 2px 6px rgba(0, 0, 0, 0.9);
+        }
+        .logo h1::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--ferrari-green), transparent);
+            border-radius: 1px;
+            transition: var(--transition);
+        }
+        .logo:hover h1::after {
+            width: 80%;
+            background: linear-gradient(90deg, transparent, var(--ferrari-green), var(--ferrari-yellow), var(--ferrari-green), transparent);
         }
        
         /* Mobile Navigation - Clean Dropdown */
@@ -644,6 +765,7 @@
     <header>
         <div class="container">
             <div class="logo">
+                <i class="fas fa-horse-head"></i>
                 <h1>CARS MAINLY</h1>
             </div>
             <nav class="nav-menu" id="navMenu">
