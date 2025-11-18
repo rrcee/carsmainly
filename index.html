@@ -86,6 +86,12 @@
             50% { text-shadow: -1px -1px 0 var(--ferrari-red), 1px -1px 0 var(--primary-black), -1px 1px 0 var(--accent-green), 1px 1px 0 var(--accent-white); }
             100% { text-shadow: -1px -1px 0 var(--accent-green), 1px -1px 0 var(--accent-white), -1px 1px 0 var(--ferrari-red), 1px 1px 0 var(--primary-black); }
         }
+        /* NEW KEYFRAME FOR RED PULSE ON YELLOW BACKGROUND */
+        @keyframes pulseRedOverlay {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 0.15; } /* Subtle transparent red pulse */
+        }
+
         .logo h1 {
             font-family: 'Anton', sans-serif;
             font-size: 1.5rem; /* Reduced size for mobile header */
@@ -151,18 +157,35 @@
             margin: 3px 0;
             transition: all 0.3s ease;
         }
-        /* HERO SECTION */
+        /* HERO SECTION - MODIFIED FOR ANIMATION */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--primary-yellow);
+            background: var(--primary-yellow); /* Base Yellow */
             padding-top: 80px; /* Account for fixed header */
+            position: relative; /* Crucial for pseudo-element positioning */
+            overflow: hidden; /* Contains the pseudo-element */
         }
+        /* RED PULSE OVERLAY */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--ferrari-red);
+            /* Apply the animation */
+            animation: pulseRedOverlay 4s infinite alternate ease-in-out; 
+            pointer-events: none;
+            z-index: 1; /* Below content */
+        }
+
         .hero-content {
             text-align: center;
-            z-index: 2;
+            z-index: 2; /* Ensures text is always on top of the red pulse */
             padding: 0 20px;
             transform: none !important; /* Disable parallax on mobile */
             opacity: 1 !important; /* Disable parallax on mobile */
@@ -566,9 +589,6 @@
                 });
             });
            
-            // Header scroll effect - removed for simplicity/performance on mobile
-            // window.addEventListener('scroll', debounce(() => { ... }));
-           
             // Dynamic copyright year
             const copyright = document.getElementById('copyright-text');
             if (copyright) {
@@ -611,10 +631,6 @@
            
             // Lazy loading for sections
             initLazySections();
-           
-            // Remove unnecessary event listeners for mobile optimization
-            // window.removeEventListener('resize', debouncedResize); 
-            // window.removeEventListener('scroll', handleParallaxScroll);
            
             // Prevent double-tap zoom (retained for good UX)
             let lastTouchEnd = 0;
@@ -702,12 +718,8 @@
                         card.classList.add('animate');
                     }, index * 100); // Faster stagger
                 });
-               
-                // Removed complex infinite carousel setup and auto-slide for simpler mobile horizontal scroll
             }
         }
-        
-        // Removed handleNextClick, setupInfiniteCarousel, initProductsCarousel, calculateCardMetrics, updateProductsCarousel, initAutoSlide, startAutoSlide, stopAutoSlide, initTiltEffect, applyTilt, and resetTilt functions as they are desktop/complex features now removed.
     </script>
 </body>
 </html>
