@@ -24,9 +24,10 @@
             --primary-black: #000000;
             --accent-green: #009A4E;
             --accent-white: #FFFFFF;
+            --dark-asphalt: #1A1A1A; /* New dark background for theme */
            
             /* Glassmorphism/UI Effects (MINIMAL FOR MOBILE) */
-            --glass-bg: rgba(255, 255, 255, 0.95); /* Adjusted for mobile clarity */
+            --glass-bg: rgba(255, 255, 255, 0.95);
             --glass-border: rgba(255, 255, 255, 0.2);
             --glass-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
@@ -35,45 +36,45 @@
         }
         body {
             font-family: 'Inter', 'Poppins', sans-serif;
-            background-color: var(--ferrari-red);
-            color: var(--primary-black);
+            background-color: var(--dark-asphalt); /* Dark Asphalt Background (Idea #3) */
+            color: var(--accent-white); /* Default text color is white on dark background */
             overflow-x: hidden;
             line-height: 1.6;
-            background-image: none; /* Disable complex background texture for mobile */
+            background-image: none;
             -webkit-text-size-adjust: 100%;
             -webkit-tap-highlight-color: transparent;
-            /* Force anti-aliasing for cleaner text rendering on mobile */
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
         .container {
-            width: 95%; /* Increased width for better mobile use */
+            width: 95%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 10px; /* Reduced padding */
+            padding: 0 10px;
         }
        
         .section-title {
             font-family: 'Anton', sans-serif;
-            font-size: 2rem; /* Mobile-friendly size */
+            font-size: 2rem;
             text-align: center;
-            margin-bottom: 30px; /* Reduced margin */
-            color: var(--ferrari-red);
+            margin-bottom: 30px;
+            color: var(--ferrari-red); /* Red Titles on Dark Background */
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        /* HEADER & NAVIGATION */
+        
+        /* HEADER (Black Chrome Look - Idea #1) */
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: var(--glass-bg);
-            /* Backdrop filter removed for better performance on low-end devices */
-            padding: 15px 0; /* Reduced padding */
+            background: rgba(0, 0, 0, 0.95); /* Dark Chrome/Carbon Fiber look */
+            padding: 15px 0;
             transition: var(--transition);
-            border-bottom: 1px solid var(--glass-border);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Reduced shadow */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); 
         }
         header .container {
             display: flex;
@@ -81,33 +82,33 @@
             align-items: center;
         }
        
-        @keyframes racingOutline {
-            0% { text-shadow: -1px -1px 0 var(--accent-green), 1px -1px 0 var(--accent-white), -1px 1px 0 var(--ferrari-red), 1px 1px 0 var(--primary-black); }
-            50% { text-shadow: -1px -1px 0 var(--ferrari-red), 1px -1px 0 var(--primary-black), -1px 1px 0 var(--accent-green), 1px 1px 0 var(--accent-white); }
-            100% { text-shadow: -1px -1px 0 var(--accent-green), 1px -1px 0 var(--accent-white), -1px 1px 0 var(--ferrari-red), 1px 1px 0 var(--primary-black); }
-        }
-        /* NEW KEYFRAME FOR RED PULSE ON YELLOW BACKGROUND */
-        @keyframes pulseRedOverlay {
-            0%, 100% { opacity: 0; }
-            50% { opacity: 0.15; } /* Subtle transparent red pulse */
+        /* Logo Animation (Italian Colors) */
+        @keyframes italianRacingOutline {
+            /* Base black for depth/shadow, alternating color for outline */
+            0% { text-shadow: 1px 1px 0 var(--primary-black), -1px -1px 0 var(--ferrari-red); } 
+            33% { text-shadow: 1px 1px 0 var(--primary-black), -1px -1px 0 var(--accent-white); } 
+            66% { text-shadow: 1px 1px 0 var(--primary-black), -1px -1px 0 var(--accent-green); } 
+            100% { text-shadow: 1px 1px 0 var(--primary-black), -1px -1px 0 var(--ferrari-red); }
         }
 
+        /* Header Logo (White text on dark header) */
         .logo h1 {
             font-family: 'Anton', sans-serif;
-            font-size: 1.5rem; /* Reduced size for mobile header */
-            animation: racingOutline 3s linear infinite;
+            font-size: 1.5rem;
+            color: var(--accent-white); /* White on dark header */
+            animation: italianRacingOutline 4s linear infinite;
         }
        
-        /* Mobile Navigation (Forced Display) */
+        /* Mobile Navigation */
         .nav-menu {
             display: none;
             position: absolute;
             top: 100%;
             left: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.98);
-            border-top: 1px solid var(--glass-border);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background: rgba(26, 26, 26, 0.98); /* Dark menu background */
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
         }
         .nav-menu.active {
             display: block;
@@ -124,7 +125,7 @@
             text-align: center;
         }
         .nav-menu ul li a {
-            color: var(--primary-black);
+            color: var(--accent-white); /* White links on dark menu */
             text-decoration: none;
             font-weight: 500;
             font-size: 1.1rem;
@@ -133,7 +134,7 @@
         }
         .nav-menu ul li a:hover,
         .nav-menu ul li a.active {
-            color: var(--accent-green);
+            color: var(--primary-yellow); /* Yellow highlight */
             text-shadow: var(--glow);
         }
         .hamburger {
@@ -144,7 +145,6 @@
             background: none;
             border: none;
             padding: 5px;
-            /* Ensure good touch target size */
             min-height: 44px;
             min-width: 44px;
             align-items: center;
@@ -153,72 +153,95 @@
         .hamburger span {
             width: 25px;
             height: 3px;
-            background: var(--primary-black);
+            background: var(--accent-white); /* White hamburger lines on dark header */
             margin: 3px 0;
             transition: all 0.3s ease;
         }
-        /* HERO SECTION - MODIFIED FOR ANIMATION */
+        
+        /* Revving V-Grid Scroll Animation (Idea #1) */
+        @keyframes vGridScroll {
+            0% { background-position: 0 0; }
+            100% { background-position: 200px 200px; }
+        }
+
+        /* HERO SECTION */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             background: var(--primary-yellow); /* Base Yellow */
-            padding-top: 80px; /* Account for fixed header */
-            position: relative; /* Crucial for pseudo-element positioning */
-            overflow: hidden; /* Contains the pseudo-element */
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
         }
-        /* RED PULSE OVERLAY */
+        /* RED V-GRID OVERLAY */
         .hero::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--ferrari-red);
+            width: 200%;
+            height: 200%;
+            /* Repeating, very faint diagonal red stripe pattern */
+            background-image: repeating-linear-gradient(
+                -45deg,
+                rgba(237, 28, 36, 0.08) 0px, /* Faint Ferrari Red */
+                rgba(237, 28, 36, 0.08) 10px, 
+                transparent 10px,
+                transparent 20px
+            );
+            background-size: 200px 200px;
             /* Apply the animation */
-            animation: pulseRedOverlay 4s infinite alternate ease-in-out; 
+            animation: vGridScroll 15s linear infinite; 
             pointer-events: none;
-            z-index: 1; /* Below content */
+            z-index: 1; 
+            transform: translate(-50%, -50%); 
         }
 
         .hero-content {
             text-align: center;
-            z-index: 2; /* Ensures text is always on top of the red pulse */
+            z-index: 2; /* Ensures content is on top of the V-Grid */
             padding: 0 20px;
-            transform: none !important; /* Disable parallax on mobile */
-            opacity: 1 !important; /* Disable parallax on mobile */
+            color: var(--primary-black); /* Black text on yellow background */
+            transform: none !important;
+            opacity: 1 !important;
         }
+        /* MAIN LOGO STYLED FOR ITALIAN RACING COLORS */
         .metallic-logo h1 {
             font-family: 'Anton', sans-serif;
-            font-size: 2.8rem; /* Mobile-friendly logo size */
-            animation: racingOutline 3s linear infinite;
-            transform: none; /* Disable 3D tilt */
+            font-size: 2.8rem;
+            color: var(--primary-black); /* Black text on yellow hero */
+            animation: italianRacingOutline 4s linear infinite;
+            /* Simulating metallic depth on black logo text (Idea #1 Aesthetic) */
+            text-shadow: 
+                0px 0px 5px rgba(0, 0, 0, 0.2), 
+                -2px -2px 0px rgba(255, 255, 255, 0.5), 
+                2px 2px 0px rgba(0, 0, 0, 0.5); 
         }
         .hero-content h2 {
-            font-size: 1.8rem; /* Mobile-friendly heading size */
+            font-size: 1.8rem;
             margin-bottom: 1rem;
             font-weight: 700;
         }
         .hero-content p {
             font-size: 1.1rem;
             margin-bottom: 2rem;
-            opacity: 1; /* Ensure text is visible immediately */
+            opacity: 1;
             transform: translateY(0);
         }
        
         .hero-buttons {
             display: flex;
-            flex-direction: column; /* Stack buttons vertically on mobile */
-            gap: 15px; /* Reduced gap */
+            flex-direction: column;
+            gap: 15px;
             margin-top: 30px;
         }
         .hero-buttons .btn {
-            opacity: 1; /* Ensure buttons are visible immediately */
+            opacity: 1;
             transform: translateY(0);
         }
-        /* BUTTONS */
+        /* BUTTONS (Premium Bevel Look - Idea #1) */
         .btn {
             display: inline-block;
             padding: 15px 25px;
@@ -229,29 +252,36 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: var(--transition);
-            box-shadow: var(--glass-shadow);
-            border: 1px solid var(--glass-border);
+            box-shadow: 
+                0 4px 10px rgba(0, 0, 0, 0.3), /* Outer shadow */
+                inset 0 0 10px rgba(255, 255, 255, 0.1), /* Inner light glow */
+                inset 0 0 0 2px rgba(0, 0, 0, 0.1); /* Inner dark border */
+            border: none;
             background: var(--accent-green);
             color: var(--accent-white);
             touch-action: manipulation;
-            width: 100%; /* Full width for mobile buttons */
-            max-width: 350px; /* Optional max-width for very large phones */
-            min-height: 48px; /* Touch target minimum size */
+            width: 100%;
+            max-width: 350px;
+            min-height: 48px;
         }
         .btn:hover,
         .btn:active {
-            transform: none; /* Disable lift on mobile */
-            box-shadow: var(--shadow-hover);
+            transform: none;
             background: #008040;
+            /* Red glow on hover/tap */
+            box-shadow: 
+                0 8px 20px rgba(237, 28, 36, 0.4), 
+                inset 0 0 15px rgba(255, 255, 255, 0.2);
         }
         /* PRODUCTS CAROUSEL SECTION */
         .products {
-            padding: 60px 0; /* Reduced padding */
-            background: var(--accent-white);
+            padding: 60px 0;
+            background: var(--dark-asphalt); /* Dark Asphalt */
+            color: var(--accent-white);
         }
         .products-carousel-container {
             max-width: 100%;
-            overflow-x: scroll; /* Allow horizontal scrolling */
+            overflow-x: scroll;
             -webkit-overflow-scrolling: touch;
             padding: 20px 0;
             justify-content: flex-start;
@@ -261,34 +291,35 @@
             display: none;
         }
         .products-carousel-container {
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
 
         .products-carousel {
             display: flex;
-            gap: 20px; /* Reduced gap */
-            padding: 0 10px; /* Padding for side visibility of cards */
+            gap: 20px;
+            padding: 0 10px;
         }
         .product-card {
-            background: var(--accent-white); /* Simpler background */
-            border-radius: 10px; /* Reduced border radius */
-            box-shadow: var(--glass-shadow);
+            background: rgba(255, 255, 255, 0.05); /* Darker card background */
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             flex-shrink: 0;
-            width: 85vw; /* Make card take up most of the viewport width */
+            width: 85vw;
             max-width: 350px;
-            transform: none !important; /* Disable tilt */
+            transform: none !important;
             transition: box-shadow 0.3s ease;
         }
         .product-card:hover,
         .product-card:active {
-            transform: none; /* Disable hover/active zoom on mobile */
+            transform: none;
             box-shadow: var(--shadow-hover);
         }
        
         .product-card .image-container {
-            height: 200px; /* Mobile image height */
-            background: rgba(0, 0, 0, 0.03);
+            height: 200px;
+            background: rgba(255, 255, 255, 0.03);
             border-radius: 10px 10px 0 0;
         }
         .product-card img {
@@ -298,10 +329,16 @@
         }
         .product-info {
             padding: 15px;
-            gap: 8px; /* Reduced gap */
+            gap: 8px;
+        }
+        .product-info h3 {
+             color: var(--accent-white);
+        }
+        .product-info p {
+             color: rgba(255, 255, 255, 0.7);
         }
         .products-carousel-nav {
-            display: none; /* Keep hidden */
+            display: none;
         }
         .product-card.stagger-item.animate {
             opacity: 1;
@@ -309,55 +346,65 @@
         }
         /* Themed Section (About/Contact) */
         .themed-section {
-            padding: 60px 0; /* Reduced padding */
-            background-color: var(--ferrari-red);
+            padding: 60px 0;
+            background-color: var(--ferrari-red); /* High-contrast Red Section */
             color: var(--accent-white);
         }
         .themed-section .section-title {
             color: var(--primary-yellow);
         }
         .about-grid {
-            flex-direction: column; /* Stack cards vertically */
+            flex-direction: column;
             gap: 20px !important;
         }
         .about-card {
             padding: 15px;
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 10px;
-            background: rgba(0, 0, 0, 0.1);
+            background: rgba(0, 0, 0, 0.2); /* Black/darker background on red */
         }
 
         /* Shipping Notice Styles */
         .shipping-notice {
-            padding: 40px 0; /* Reduced padding */
-            background: var(--accent-white);
+            padding: 40px 0;
+            background: var(--dark-asphalt);
+            color: var(--accent-white);
             text-align: center;
         }
         .shipping-notice .notice-content {
-            flex-direction: column; /* Stack icon and text */
+            flex-direction: column;
             text-align: center;
             gap: 15px;
         }
         .shipping-notice h3 {
             font-size: 1.4rem;
+            color: var(--ferrari-red); /* Red highlight */
         }
         .shipping-notice i {
             font-size: 2.5rem !important;
         }
-        /* Footer Styles */
+        /* Footer Styles (Engine Bay Detail - Idea #3) */
         footer {
             background: var(--primary-black);
+            /* Brushed metal effect using gradients */
+            background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.05) 50%, transparent 50%),
+                              linear-gradient(90deg, rgba(255, 255, 255, 0.05) 50%, transparent 50%);
+            background-size: 5px 5px; /* Fine texture */
+            /* The Red Line: Structural Accent */
+            border-top: 5px solid var(--ferrari-red); 
             padding: 30px 0 20px;
+            color: var(--accent-white);
         }
         footer .footer-content {
-            flex-direction: column; /* Stack footer content */
+            flex-direction: column;
             gap: 20px;
             text-align: center;
             margin-bottom: 20px;
         }
         footer .footer-links a {
-            margin: 0 8px; /* Reduced margin */
+            margin: 0 8px;
             font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
         }
         .social-icons {
             margin-top: 10px;
@@ -365,9 +412,11 @@
         .social-icons a {
             font-size: 1.3rem;
             margin: 0 5px;
+            color: var(--primary-yellow);
         }
         .copyright {
             padding-top: 15px;
+            color: rgba(255, 255, 255, 0.5);
         }
 
         /* CONTACT SECTION Mobile adjustments */
@@ -431,7 +480,7 @@
                 <div class="products-carousel" id="productsContainer">
                     </div>
             </div>
-            <p style="text-align: center; margin-top: 20px; font-size: 0.9rem; color: #555;">&larr; **Scroll horizontally to view more products** &rarr;</p>
+            <p style="text-align: center; margin-top: 20px; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">&larr; **Scroll horizontally to view more products** &rarr;</p>
         </div>
     </section>
     <section class="shipping-notice lazy-section">
@@ -555,8 +604,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             const hamburger = document.getElementById('hamburger');
             const navMenu = document.getElementById('navMenu');
-            const header = document.querySelector('header');
-           
+            
             // Hamburger Menu Toggle
             hamburger.addEventListener('click', () => {
                 const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
@@ -701,8 +749,8 @@
                             <img src="${product.imagePath}" alt="${product.name}" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/400x300/ED1C24/fff?text=IMAGE+NOT+FOUND';">
                         </div>
                         <div class="product-info">
-                            <h3 style="font-family: 'Anton', sans-serif; font-size: 1.1rem; color: var(--primary-black); margin-bottom: 5px; flex-grow: 1;">${product.name}</h3>
-                            <p style="font-size: 0.8rem;">Premium Die-Cast Model</p>
+                            <h3 style="font-family: 'Anton', sans-serif; font-size: 1.1rem; color: var(--accent-white); margin-bottom: 5px; flex-grow: 1;">${product.name}</h3>
+                            <p style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.7);">Premium Die-Cast Model</p>
                             <a href="https://www.instagram.com/carsmainly" target="_blank" class="btn" style="padding: 10px 15px; font-size: 0.8rem; border-radius: 20px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); width: auto; max-width: 150px; min-height: 36px; margin: 0 auto;">
                                 <i class="fab fa-instagram"></i> Inquire / Buy
                             </a>
