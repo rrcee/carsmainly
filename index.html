@@ -20,27 +20,23 @@
         :root {
             /* OFFICIAL COLORS */
             --ferrari-red: #ED1C24;
-            --primary-yellow: #FFDD00; /* Adjusted Yellow: Deeper and less harsh */
+            --primary-yellow: #FFDD00; /* Deeper racing yellow for comfort */
             --primary-black: #000000;
             --accent-green: #009A4E;
             --accent-white: #FFFFFF;
             --dark-asphalt: #1A1A1A; /* Dark background for theme */
            
             /* UI Effects */
-            --glass-bg: rgba(255, 255, 255, 0.95);
-            --glass-border: rgba(255, 255, 255, 0.2);
-            --glass-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
             --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.2);
             --glow: 0 0 5px rgba(255, 242, 0, 0.6);
         }
         body {
             font-family: 'Inter', 'Poppins', sans-serif;
-            background-color: var(--dark-asphalt); /* Dark Asphalt Background */
+            background-color: var(--dark-asphalt); 
             color: var(--accent-white); 
             overflow-x: hidden;
             line-height: 1.6;
-            background-image: none;
             -webkit-text-size-adjust: 100%;
             -webkit-tap-highlight-color: transparent;
             -webkit-font-smoothing: antialiased;
@@ -70,7 +66,7 @@
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(0, 0, 0, 0.95); /* Dark Chrome/Carbon Fiber look */
+            background: rgba(0, 0, 0, 0.95); 
             padding: 15px 0;
             transition: var(--transition);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -82,36 +78,32 @@
             align-items: center;
         }
        
-        /* Logo Animation (Italian Colors) - THICKER OUTLINE */
+        /* Logo Animation (Italian Colors) - BOLD/THICKER OUTLINE */
         @keyframes italianRacingOutline {
-            /* Using multiple shadows to create a thicker, bolder outline (2px offset + 2px blur) */
+            /* Using stacked shadows to create a thick, clear, 2px outline */
             0% { 
                 text-shadow: 
-                    2px 2px 0 var(--primary-black), /* Main text shadow */
-                    -2px -2px 2px var(--ferrari-red), /* Thicker colored shadow 1 */
-                    2px 2px 2px var(--ferrari-red); /* Thicker colored shadow 2 */
+                    -2px -2px 0 var(--ferrari-red), 2px -2px 0 var(--ferrari-red), 
+                    -2px 2px 0 var(--ferrari-red), 2px 2px 0 var(--ferrari-red); 
             } 
             33% { 
                 text-shadow: 
-                    2px 2px 0 var(--primary-black), 
-                    -2px -2px 2px var(--accent-white), 
-                    2px 2px 2px var(--accent-white); 
+                    -2px -2px 0 var(--accent-white), 2px -2px 0 var(--accent-white), 
+                    -2px 2px 0 var(--accent-white), 2px 2px 0 var(--accent-white); 
             } 
             66% { 
                 text-shadow: 
-                    2px 2px 0 var(--primary-black), 
-                    -2px -2px 2px var(--accent-green), 
-                    2px 2px 2px var(--accent-green); 
+                    -2px -2px 0 var(--accent-green), 2px -2px 0 var(--accent-green), 
+                    -2px 2px 0 var(--accent-green), 2px 2px 0 var(--accent-green); 
             } 
             100% { 
                 text-shadow: 
-                    2px 2px 0 var(--primary-black), 
-                    -2px -2px 2px var(--ferrari-red), 
-                    2px 2px 2px var(--ferrari-red); 
+                    -2px -2px 0 var(--ferrari-red), 2px -2px 0 var(--ferrari-red), 
+                    -2px 2px 0 var(--ferrari-red), 2px 2px 0 var(--ferrari-red); 
             }
         }
 
-        /* Header Logo */
+        /* Header Logo: White Text (Primary) on Dark Background */
         .logo h1 {
             font-family: 'Anton', sans-serif;
             font-size: 1.5rem;
@@ -133,12 +125,6 @@
         .nav-menu.active {
             display: block;
         }
-        .nav-menu ul {
-            flex-direction: column;
-            align-items: center;
-            padding: 10px 0;
-            list-style: none;
-        }
         .nav-menu ul li a {
             color: var(--accent-white); 
         }
@@ -151,62 +137,59 @@
             background: var(--accent-white); 
         }
         
-        /* Revving V-Grid Scroll Animation */
-        @keyframes vGridScroll {
-            0% { background-position: 0 0; }
-            100% { background-position: 200px 200px; }
-        }
-
-        /* HERO SECTION */
+        /* HERO SECTION (New Red Racing Stripes) */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--primary-yellow); /* Adjusted Yellow Base */
+            background: var(--primary-yellow); /* Yellow Base */
             padding-top: 80px;
             position: relative;
             overflow: hidden;
         }
-        /* RED V-GRID OVERLAY */
+        
+        /* Top Red Stripe */
         .hero::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 200%;
-            height: 200%;
-            /* Faint but Visible Red Stripe Pattern */
-            background-image: repeating-linear-gradient(
-                -45deg,
-                rgba(237, 28, 36, 0.20) 0px, 
-                rgba(237, 28, 36, 0.20) 10px, 
-                transparent 10px,
-                transparent 20px
-            );
-            background-size: 200px 200px;
-            /* Apply the animation */
-            animation: vGridScroll 15s linear infinite; 
-            pointer-events: none;
-            z-index: 1; 
-            transform: translate(-50%, -50%); 
+            width: 100%;
+            height: 10px; /* Stripe Thickness */
+            background: var(--ferrari-red);
+            box-shadow: 0 0 10px rgba(237, 28, 36, 0.5); /* Subtle glow */
+            z-index: 1;
         }
-
+        
+        /* Bottom Red Stripe */
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 10px; /* Stripe Thickness */
+            background: var(--ferrari-red);
+            box-shadow: 0 0 10px rgba(237, 28, 36, 0.5); /* Subtle glow */
+            z-index: 1;
+        }
+        
         .hero-content {
             text-align: center;
-            z-index: 2; 
+            z-index: 2; /* Ensures content is on top of stripes */
             padding: 0 20px;
             color: var(--primary-black); 
             transform: none !important;
             opacity: 1 !important;
         }
-        /* MAIN LOGO */
+        /* MAIN LOGO: Black Text (Primary) on Yellow Background */
         .metallic-logo h1 {
             font-family: 'Anton', sans-serif;
             font-size: 2.8rem;
             color: var(--primary-black); 
             animation: italianRacingOutline 4s linear infinite;
-            /* Simulating metallic depth on black logo text */
+            /* Added depth for a premium look */
             text-shadow: 
                 0px 0px 5px rgba(0, 0, 0, 0.2), 
                 -2px -2px 0px rgba(255, 255, 255, 0.5), 
@@ -718,7 +701,7 @@
             lazySections.forEach(section => observer.observe(section));
         }
 
-        // Load Products with stagger
+        // Load Products with stagger (Names and paths remain consistent)
         function loadProducts() {
             const products = [
                 { name: "Toyota Supra Red & Subaru WRX STi Pink 2-Pack", imagePath: "images/product-1.jpg" },
@@ -735,7 +718,6 @@
                 
                 products.forEach(product => {
                     const productCard = document.createElement('div');
-                    // Removed 'tilt-effect' class
                     productCard.className = 'product-card stagger-item'; 
                     productCard.innerHTML = `
                         <div class="image-container">
