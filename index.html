@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Cars Mainly - Premium Hot Wheels Showroom</title>
+    <title>Cars Mainly - Premium Hot Wheels Showroom (Mobile)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
@@ -25,13 +25,13 @@
             --accent-green: #009A4E;
             --accent-white: #FFFFFF;
            
-            /* Glassmorphism/UI Effects */
-            --glass-bg: rgba(255, 255, 255, 0.15);
+            /* Glassmorphism/UI Effects (MINIMAL FOR MOBILE) */
+            --glass-bg: rgba(255, 255, 255, 0.95); /* Adjusted for mobile clarity */
             --glass-border: rgba(255, 255, 255, 0.2);
-            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            --glass-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
-            --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.3);
-            --glow: 0 0 10px rgba(255, 242, 0, 0.8);
+            --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.2);
+            --glow: 0 0 5px rgba(255, 242, 0, 0.6);
         }
         body {
             font-family: 'Inter', 'Poppins', sans-serif;
@@ -39,24 +39,25 @@
             color: var(--primary-black);
             overflow-x: hidden;
             line-height: 1.6;
-            /* Subtle background texture using gradients */
-            background-image: radial-gradient(circle at 10% 20%, rgba(255, 242, 0, 0.1) 0%, transparent 20%),
-                              radial-gradient(circle at 90% 80%, rgba(0, 154, 78, 0.1) 0%, transparent 20%);
-            -webkit-text-size-adjust: 100%; /* Prevent iOS font scaling */
-            -webkit-tap-highlight-color: transparent; /* Remove tap highlight */
+            background-image: none; /* Disable complex background texture for mobile */
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
+            /* Force anti-aliasing for cleaner text rendering on mobile */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         .container {
-            width: 90%;
+            width: 95%; /* Increased width for better mobile use */
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 10px; /* Reduced padding */
         }
        
         .section-title {
             font-family: 'Anton', sans-serif;
-            font-size: 2.5rem;
+            font-size: 2rem; /* Mobile-friendly size */
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 30px; /* Reduced margin */
             color: var(--ferrari-red);
             text-transform: uppercase;
         }
@@ -68,13 +69,11 @@
             width: 100%;
             z-index: 1000;
             background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 20px 0;
+            /* Backdrop filter removed for better performance on low-end devices */
+            padding: 15px 0; /* Reduced padding */
             transition: var(--transition);
             border-bottom: 1px solid var(--glass-border);
-            box-shadow: var(--glass-shadow);
-            will-change: transform; /* Optimize for animations */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Reduced shadow */
         }
         header .container {
             display: flex;
@@ -82,41 +81,68 @@
             align-items: center;
         }
        
-        /* Racing Outline Animation for Logo */
         @keyframes racingOutline {
-            0% { text-shadow: -2px -2px 0 var(--accent-green), 2px -2px 0 var(--accent-white), -2px 2px 0 var(--ferrari-red), 2px 2px 0 var(--primary-black); }
-            50% { text-shadow: -2px -2px 0 var(--ferrari-red), 2px -2px 0 var(--primary-black), -2px 2px 0 var(--accent-green), 2px 2px 0 var(--accent-white); }
-            100% { text-shadow: -2px -2px 0 var(--accent-green), 2px -2px 0 var(--accent-white), -2px 2px 0 var(--ferrari-red), 2px 2px 0 var(--primary-black); }
+            0% { text-shadow: -1px -1px 0 var(--accent-green), 1px -1px 0 var(--accent-white), -1px 1px 0 var(--ferrari-red), 1px 1px 0 var(--primary-black); }
+            50% { text-shadow: -1px -1px 0 var(--ferrari-red), 1px -1px 0 var(--primary-black), -1px 1px 0 var(--accent-green), 1px 1px 0 var(--accent-white); }
+            100% { text-shadow: -1px -1px 0 var(--accent-green), 1px -1px 0 var(--accent-white), -1px 1px 0 var(--ferrari-red), 1px 1px 0 var(--primary-black); }
         }
         .logo h1 {
             font-family: 'Anton', sans-serif;
-            font-size: 2rem;
+            font-size: 1.5rem; /* Reduced size for mobile header */
             animation: racingOutline 3s linear infinite;
         }
+       
+        /* Mobile Navigation (Forced Display) */
+        .nav-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            border-top: 1px solid var(--glass-border);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .nav-menu.active {
+            display: block;
+        }
         .nav-menu ul {
-            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 0;
             list-style: none;
         }
         .nav-menu ul li {
-            margin-left: 30px;
+            margin: 10px 0;
+            width: 100%;
+            text-align: center;
         }
         .nav-menu ul li a {
             color: var(--primary-black);
             text-decoration: none;
             font-weight: 500;
             font-size: 1.1rem;
-            transition: var(--transition);
-            position: relative;
+            display: block;
+            padding: 10px 0;
         }
+        .nav-menu ul li a:hover,
         .nav-menu ul li a.active {
             color: var(--accent-green);
-            text-shadow: 0 0 10px var(--glow);
+            text-shadow: var(--glow);
         }
         .hamburger {
-            display: none;
+            display: flex;
             flex-direction: column;
             cursor: pointer;
             z-index: 1001;
+            background: none;
+            border: none;
+            padding: 5px;
+            /* Ensure good touch target size */
+            min-height: 44px;
+            min-width: 44px;
+            align-items: center;
+            justify-content: center;
         }
         .hamburger span {
             width: 25px;
@@ -125,102 +151,58 @@
             margin: 3px 0;
             transition: all 0.3s ease;
         }
-        @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: rgba(255, 255, 255, 0.95);
-                backdrop-filter: blur(10px);
-                border-top: 1px solid var(--glass-border);
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            }
-            .nav-menu.active {
-                display: block;
-            }
-            .nav-menu ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            .nav-menu ul li {
-                margin: 10px 0;
-            }
-            .hamburger {
-                display: flex;
-            }
-        }
         /* HERO SECTION */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             background: var(--primary-yellow);
+            padding-top: 80px; /* Account for fixed header */
         }
         .hero-content {
             text-align: center;
             z-index: 2;
             padding: 0 20px;
-            transition: transform 0.1s linear, opacity 0.2s ease-out;
-            will-change: transform, opacity; /* Optimize hero animations */
+            transform: none !important; /* Disable parallax on mobile */
+            opacity: 1 !important; /* Disable parallax on mobile */
         }
         .metallic-logo h1 {
             font-family: 'Anton', sans-serif;
-            font-size: 5rem;
+            font-size: 2.8rem; /* Mobile-friendly logo size */
             animation: racingOutline 3s linear infinite;
-            transform: perspective(500px) rotateY(5deg);
+            transform: none; /* Disable 3D tilt */
         }
         .hero-content h2 {
-            font-size: 2.5rem;
+            font-size: 1.8rem; /* Mobile-friendly heading size */
             margin-bottom: 1rem;
             font-weight: 700;
-            overflow: hidden;
-        }
-        .hero-content h2.typing::after {
-            content: '|';
-            animation: blink 0.8s infinite;
-        }
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
         }
         .hero-content p {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.5s ease;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             margin-bottom: 2rem;
-        }
-        .hero-content p.animate {
-            opacity: 1;
+            opacity: 1; /* Ensure text is visible immediately */
             transform: translateY(0);
         }
        
         .hero-buttons {
             display: flex;
-            justify-content: center;
-            gap: 20px;
+            flex-direction: column; /* Stack buttons vertically on mobile */
+            gap: 15px; /* Reduced gap */
             margin-top: 30px;
         }
         .hero-buttons .btn {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.5s ease;
-        }
-        .hero-buttons .btn.animate {
-            opacity: 1;
+            opacity: 1; /* Ensure buttons are visible immediately */
             transform: translateY(0);
         }
         /* BUTTONS */
         .btn {
             display: inline-block;
-            padding: 15px 30px;
+            padding: 15px 25px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: var(--transition);
@@ -228,311 +210,157 @@
             border: 1px solid var(--glass-border);
             background: var(--accent-green);
             color: var(--accent-white);
-            touch-action: manipulation; /* Improve touch response */
+            touch-action: manipulation;
+            width: 100%; /* Full width for mobile buttons */
+            max-width: 350px; /* Optional max-width for very large phones */
+            min-height: 48px; /* Touch target minimum size */
         }
         .btn:hover,
         .btn:active {
-            transform: translateY(-3px);
+            transform: none; /* Disable lift on mobile */
             box-shadow: var(--shadow-hover);
             background: #008040;
         }
         /* PRODUCTS CAROUSEL SECTION */
         .products {
-            padding: 100px 0;
+            padding: 60px 0; /* Reduced padding */
             background: var(--accent-white);
-            position: relative;
         }
         .products-carousel-container {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-            overflow: hidden;
+            max-width: 100%;
+            overflow-x: scroll; /* Allow horizontal scrolling */
+            -webkit-overflow-scrolling: touch;
             padding: 20px 0;
-            display: flex;
-            justify-content: center; /* Center the entire carousel */
+            justify-content: flex-start;
         }
+        /* Hide scrollbar on mobile devices (optional) */
+        .products-carousel-container::-webkit-scrollbar {
+            display: none;
+        }
+        .products-carousel-container {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
         .products-carousel {
             display: flex;
-            transition: transform 0.5s ease-in-out;
-            gap: 30px;
-            padding: 0 15px;
-            justify-content: flex-start; /* Align cards left within carousel, but container centers */
-            will-change: transform; /* GPU acceleration for carousel */
+            gap: 20px; /* Reduced gap */
+            padding: 0 10px; /* Padding for side visibility of cards */
         }
         .product-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            overflow: hidden;
+            background: var(--accent-white); /* Simpler background */
+            border-radius: 10px; /* Reduced border radius */
             box-shadow: var(--glass-shadow);
-            transition: var(--transition);
-            border: 1px solid var(--glass-border);
             flex-shrink: 0;
-            display: flex;
-            flex-direction: column;
-            touch-action: manipulation; /* Prevent double-tap zoom */
-            will-change: transform; /* Optimize hover transforms */
+            width: 85vw; /* Make card take up most of the viewport width */
+            max-width: 350px;
+            transform: none !important; /* Disable tilt */
+            transition: box-shadow 0.3s ease;
         }
         .product-card:hover,
         .product-card:active {
-            transform: translateY(-8px) scale(1.05);
-            box-shadow: var(--shadow-hover); /* Remove glow, keep shadow for lift */
-            z-index: 10; /* Ensure it layers above others during zoom */
+            transform: none; /* Disable hover/active zoom on mobile */
+            box-shadow: var(--shadow-hover);
         }
        
-        /* Responsive card width */
-        @media (min-width: 993px) {
-            .product-card {
-                min-width: calc((100% / 3) - 20px);
-            }
-        }
-        @media (min-width: 577px) and (max-width: 992px) {
-            .product-card {
-                min-width: calc((100% / 2) - 15px);
-            }
-        }
-        @media (max-width: 576px) {
-            .product-card {
-                min-width: 95%;
-                margin: 0 auto;
-            }
-            .products-carousel {
-                gap: 0;
-                justify-content: center;
-            }
-        }
-       
-        /* FIX: Ensure consistent card height */
         .product-card .image-container {
-            height: 250px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0, 0, 0, 0.05);
-        }
-        @media (max-width: 992px) and (min-width: 577px) {
-            .product-card .image-container {
-                height: 220px;
-            }
-        }
-        @media (max-width: 576px) {
-            .product-card .image-container {
-                height: 200px;
-                aspect-ratio: 16/9;
-            }
+            height: 200px; /* Mobile image height */
+            background: rgba(0, 0, 0, 0.03);
+            border-radius: 10px 10px 0 0;
         }
         .product-card img {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            display: block;
-            transition: var(--transition);
         }
         .product-info {
             padding: 15px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            flex-grow: 1;
-        }
-        @media (max-width: 576px) {
-            .product-info {
-                padding: 12px;
-            }
+            gap: 8px; /* Reduced gap */
         }
         .products-carousel-nav {
-            display: none; /* Hide navigation buttons entirely */
+            display: none; /* Keep hidden */
         }
-        /* Entrance Animations for Products */
-        .product-card.stagger-item {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        .product-card.animate {
+        .product-card.stagger-item.animate {
             opacity: 1;
             transform: translateY(0);
         }
         /* Themed Section (About/Contact) */
         .themed-section {
-            padding: 100px 0;
+            padding: 60px 0; /* Reduced padding */
             background-color: var(--ferrari-red);
             color: var(--accent-white);
         }
         .themed-section .section-title {
             color: var(--primary-yellow);
         }
-        /* Entrance Animations for About/Contact */
-        .about-card,
-        .contact-method,
-        .shipping-info {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        .about-grid {
+            flex-direction: column; /* Stack cards vertically */
+            gap: 20px !important;
         }
-        .about-card.animate,
-        .contact-method.animate,
-        .shipping-info.animate {
-            opacity: 1;
-            transform: translateY(0);
+        .about-card {
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.1);
         }
+
         /* Shipping Notice Styles */
         .shipping-notice {
-            padding: 50px 0;
+            padding: 40px 0; /* Reduced padding */
             background: var(--accent-white);
             text-align: center;
         }
         .shipping-notice .notice-content {
-            display: flex;
-            align-items: center;
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: left;
-            gap: 20px;
+            flex-direction: column; /* Stack icon and text */
+            text-align: center;
+            gap: 15px;
         }
         .shipping-notice h3 {
-            font-family: 'Anton', sans-serif;
-            color: var(--ferrari-red);
-            margin-bottom: 10px;
+            font-size: 1.4rem;
         }
-        .shipping-notice p {
-            color: var(--primary-black);
+        .shipping-notice i {
+            font-size: 2.5rem !important;
         }
         /* Footer Styles */
         footer {
             background: var(--primary-black);
-            color: var(--accent-white);
-            padding: 40px 0 20px;
+            padding: 30px 0 20px;
         }
         footer .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
+            flex-direction: column; /* Stack footer content */
+            gap: 20px;
+            text-align: center;
             margin-bottom: 20px;
         }
         footer .footer-links a {
-            color: var(--accent-white);
-            text-decoration: none;
-            margin: 0 10px;
+            margin: 0 8px; /* Reduced margin */
+            font-size: 0.9rem;
+        }
+        .social-icons {
+            margin-top: 10px;
         }
         .social-icons a {
-            color: var(--primary-yellow);
-            font-size: 1.5rem;
-            margin-left: 10px;
+            font-size: 1.3rem;
+            margin: 0 5px;
         }
         .copyright {
-            text-align: center;
-            border-top: 1px solid var(--glass-border);
-            padding-top: 20px;
-            opacity: 0.8;
+            padding-top: 15px;
         }
-        /* Lazy Load Styles */
-        .lazy-section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+
+        /* CONTACT SECTION Mobile adjustments */
+        .contact-method {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
         }
-        .lazy-section.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .shipping-info {
+            padding: 15px 0;
         }
-        /* --- RESPONSIVE DESIGN BREAKPOINTS --- */
-        @media (max-width: 992px) {
-            .hero-buttons {
-                gap: 15px;
-            }
-        }
-        @media (max-width: 576px) {
-            /* ENHANCED MOBILE OPTIMIZATIONS */
-            body {
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;
-            }
-           
-            .products, .themed-section {
-                padding: 60px 0;
-            }
-           
-            .section-title {
-                font-size: 2rem;
-                margin-bottom: 30px;
-            }
-           
-            .metallic-logo h1 {
-                font-size: 2.5rem;
-            }
-           
-            .hero-content h2 {
-                font-size: 1.8rem;
-            }
-           
-            .hero-buttons {
-                flex-direction: column;
-                gap: 15px;
-            }
-           
-            .btn {
-                width: 100%;
-                max-width: 300px;
-                padding: 16px 24px;
-                font-size: 1rem;
-                min-height: 48px;
-            }
-           
-            /* Disable zoom/lift on mobile */
-            .product-card:hover,
-            .product-card:active {
-                transform: none;
-            }
-           
-            /* Disable Parallax/Tilt for smooth mobile scrolling */
-            .tilt-effect, .hero-content {
-                transform: none !important;
-                opacity: 1 !important;
-            }
-            /* Force yellow consistency on mobile */
-            .hero {
-                background-color: #FFF200 !important;
-            }
-            .shipping-notice .notice-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 15px;
-            }
-            .shipping-notice i {
-                font-size: 2.5rem;
-            }
-            /* Improve footer on mobile */
-            footer .footer-content {
-                flex-direction: column;
-                gap: 20px;
-                text-align: center;
-            }
-            footer .footer-links {
-                order: 3;
-            }
-            .social-icons {
-                order: 2;
-            }
-            /* Reduce blur on mobile for performance */
-            [style*="backdrop-filter"] {
-                backdrop-filter: none !important;
-            }
-        }
-        @media (max-width: 360px) {
-            .container {
-                padding: 0 10px;
-            }
-            .product-card .image-container {
-                height: 180px;
-            }
-            .btn {
-                padding: 14px 20px;
-            }
+        .shipping-info p {
+            font-size: 1rem !important;
         }
     </style>
 </head>
@@ -578,14 +406,15 @@
             <h2 class="section-title">Hot Wheels Collection</h2>
             <div class="products-carousel-container">
                 <div class="products-carousel" id="productsContainer">
-                </div>
+                    </div>
             </div>
+            <p style="text-align: center; margin-top: 20px; font-size: 0.9rem; color: #555;">&larr; **Scroll horizontally to view more products** &rarr;</p>
         </div>
     </section>
     <section class="shipping-notice lazy-section">
         <div class="container">
             <div class="notice-content">
-                <i class="fas fa-truck" style="font-size: 3rem; color: var(--primary-yellow);"></i>
+                <i class="fas fa-truck" style="color: var(--primary-yellow);"></i>
                 <div>
                     <h3>India-Wide Delivery</h3>
                     <p>Shipping charges vary by location. Fast and reliable delivery across India.</p>
@@ -597,24 +426,24 @@
         <div class="container">
             <div class="about-content">
                 <h2 class="section-title">Our Story</h2>
-                <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 30px; text-align: center; max-width: 800px; margin: 0 auto 40px;">
+                <p style="font-size: 1.1rem; line-height: 1.6; margin: 0 auto 30px; text-align: center;">
                     Founded with a passion for precision engineering and automotive excellence, **Cars Mainly** has become the premier destination for Hot Wheels enthusiasts in India. Our journey began with a simple vision: to bring the thrill of collecting and playing with premium die-cast vehicles to fans across the nation.
                 </p>
                
-                <div class="about-grid" style="display: flex; gap: 30px; justify-content: center; flex-wrap: wrap;">
+                <div class="about-grid">
                     <div class="about-card">
-                        <h3 style="font-family: 'Anton', sans-serif; margin-bottom: 20px; font-size: 1.8rem; color: var(--primary-yellow);">Our Mission</h3>
-                        <p>To provide collectors and enthusiasts with authentic, high-quality Hot Wheels products while fostering a community that celebrates automotive culture and craftsmanship.</p>
+                        <h3 style="font-family: 'Anton', sans-serif; margin-bottom: 10px; font-size: 1.5rem; color: var(--primary-yellow);">Our Mission</h3>
+                        <p style="font-size: 1rem;">To provide collectors and enthusiasts with authentic, high-quality Hot Wheels products while fostering a community that celebrates automotive culture and craftsmanship.</p>
                     </div>
                    
                     <div class="about-card">
-                        <h3 style="font-family: 'Anton', sans-serif; margin-bottom: 20px; font-size: 1.8rem; color: var(--primary-yellow);">Quality Assurance</h3>
-                        <p>Every product in our collection undergoes rigorous quality checks to ensure authenticity and premium craftsmanship that meets the standards of discerning collectors.</p>
+                        <h3 style="font-family: 'Anton', sans-serif; margin-bottom: 10px; font-size: 1.5rem; color: var(--primary-yellow);">Quality Assurance</h3>
+                        <p style="font-size: 1rem;">Every product in our collection undergoes rigorous quality checks to ensure authenticity and premium craftsmanship that meets the standards of discerning collectors.</p>
                     </div>
                    
                     <div class="about-card">
-                        <h3 style="font-family: 'Anton', sans-serif; margin-bottom: 20px; font-size: 1.8rem; color: var(--primary-yellow);">Community Focus</h3>
-                        <p>We're more than just a retailer - we're building a vibrant community of Hot Wheels enthusiasts through events, collaborations, and shared experiences.</p>
+                        <h3 style="font-family: 'Anton', sans-serif; margin-bottom: 10px; font-size: 1.5rem; color: var(--primary-yellow);">Community Focus</h3>
+                        <p style="font-size: 1rem;">We're more than just a retailer - we're building a vibrant community of Hot Wheels enthusiasts through events, collaborations, and shared experiences.</p>
                     </div>
                 </div>
             </div>
@@ -627,27 +456,27 @@
                 <div class="contact-info" style="max-width: 500px; width: 100%;">
                    
                     <div class="contact-method">
-                        <i class="fab fa-instagram" style="font-size: 2rem; margin-right: 20px; color: var(--primary-yellow);"></i>
+                        <i class="fab fa-instagram" style="font-size: 1.8rem; margin-right: 10px; color: var(--primary-yellow);"></i>
                         <div>
-                            <h4 style="font-family: 'Anton', sans-serif; margin-bottom: 5px;">Instagram</h4>
-                            <a href="https://www.instagram.com/carsmainly" target="_blank" style="text-decoration: none; font-size: 1.1rem; color: var(--primary-yellow);">@carsmainly</a>
-                            <p style="margin-top: 5px;">Check live stock updates and latest arrivals</p>
+                            <h4 style="font-family: 'Anton', sans-serif; margin-bottom: 5px; font-size: 1.2rem;">Instagram</h4>
+                            <a href="https://www.instagram.com/carsmainly" target="_blank" style="text-decoration: none; font-size: 1rem; color: var(--primary-yellow);">@carsmainly</a>
+                            <p style="margin-top: 5px; font-size: 0.9rem;">Check live stock updates and latest arrivals</p>
                         </div>
                     </div>
                    
                     <div class="contact-method">
-                        <i class="fas fa-envelope" style="font-size: 2rem; margin-right: 20px; color: var(--primary-yellow);"></i>
+                        <i class="fas fa-envelope" style="font-size: 1.8rem; margin-right: 10px; color: var(--primary-yellow);"></i>
                         <div>
-                            <h4 style="font-family: 'Anton', sans-serif; margin-bottom: 5px;">Email</h4>
-                            <p style="font-size: 1.1rem;">Coming Soon</p>
-                            <p style="margin-top: 5px;">General inquiries and support</p>
+                            <h4 style="font-family: 'Anton', sans-serif; margin-bottom: 5px; font-size: 1.2rem;">Email</h4>
+                            <p style="font-size: 1rem;">Coming Soon</p>
+                            <p style="margin-top: 5px; font-size: 0.9rem;">General inquiries and support</p>
                         </div>
                     </div>
                    
                     <div class="shipping-info">
-                        <h3 style="font-family: 'Anton', sans-serif; font-size: 1.5rem; margin-bottom: 20px; text-align: center; color: var(--primary-yellow);">Shipping Information</h3>
-                        <p style="text-align: center; font-size: 1.1rem; line-height: 1.6;">
-                            <i class="fas fa-truck" style="color: var(--accent-green); margin-right: 10px;"></i>
+                        <h3 style="font-family: 'Anton', sans-serif; font-size: 1.4rem; margin-bottom: 15px; text-align: center; color: var(--primary-yellow);">Shipping Information</h3>
+                        <p style="text-align: center; font-size: 1rem; line-height: 1.5;">
+                            <i class="fas fa-truck" style="color: var(--accent-green); margin-right: 8px;"></i>
                             We deliver across India with variable shipping charges based on location.
                         </p>
                     </div>
@@ -659,8 +488,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <h2 style="font-family: 'Anton', sans-serif; font-size: 1.8rem;">CARS MAINLY</h2>
-                    <p style="font-size: 0.9rem;">Premium Hot Wheels Collection</p>
+                    <h2 style="font-family: 'Anton', sans-serif; font-size: 1.5rem;">CARS MAINLY</h2>
+                    <p style="font-size: 0.8rem;">Premium Hot Wheels Collection</p>
                 </div>
                 <div class="footer-links">
                     <a href="#home">Home</a>
@@ -692,7 +521,7 @@
         }
 
         // Stagger animation function
-        function staggerAnimate(elements, delay = 250) {
+        function staggerAnimate(elements, delay = 150) {
             elements.forEach((el, index) => {
                 setTimeout(() => {
                     el.classList.add('animate');
@@ -719,7 +548,8 @@
                     const targetId = link.getAttribute('href');
                     const target = document.querySelector(targetId);
                     if (target) {
-                        const offsetTop = target.getBoundingClientRect().top + window.pageYOffset - 80;
+                        // Offset reduced for mobile header size
+                        const offsetTop = target.getBoundingClientRect().top + window.pageYOffset - 70; 
                         window.scrollTo({
                             top: offsetTop,
                             behavior: 'smooth'
@@ -728,7 +558,7 @@
                     // Active class
                     document.querySelectorAll('#navMenu a').forEach(a => a.classList.remove('active'));
                     link.classList.add('active');
-                    // Close mobile
+                    // Close mobile menu
                     if (navMenu.classList.contains('active')) {
                         hamburger.setAttribute('aria-expanded', 'false');
                         navMenu.classList.remove('active');
@@ -736,11 +566,8 @@
                 });
             });
            
-            // Header scroll effect - debounced
-            const handleScroll = debounce(() => {
-                header.classList.toggle('scrolled', window.scrollY > 100);
-            }, 16);
-            window.addEventListener('scroll', handleScroll);
+            // Header scroll effect - removed for simplicity/performance on mobile
+            // window.addEventListener('scroll', debounce(() => { ... }));
            
             // Dynamic copyright year
             const copyright = document.getElementById('copyright-text');
@@ -749,7 +576,7 @@
                 copyright.innerHTML = `&copy; ${currentYear} Cars Mainly. All rights reserved.`;
             }
            
-            // Hero typewriter animation
+            // Hero typewriter animation (Modified for faster mobile load)
             const heroH2 = document.querySelector('.hero-content h2');
             const heroP = document.querySelector('.hero-content p');
             const heroBtns = document.querySelectorAll('.hero-buttons .btn');
@@ -761,41 +588,35 @@
                     if (i < text.length) {
                         heroH2.innerHTML += text.charAt(i);
                         i++;
-                        setTimeout(typeWriter, 80 + Math.random() * 40);
+                        setTimeout(typeWriter, 50 + Math.random() * 20); // Faster typing
                     } else {
                         heroH2.classList.remove('typing');
-                        // Animate p
+                        // Animate p (Quickly visible on mobile)
                         setTimeout(() => {
                             heroP.classList.add('animate');
-                            // Animate buttons
+                            // Animate buttons (Quickly visible on mobile)
                             setTimeout(() => {
                                 heroBtns.forEach((btn, index) => {
-                                    setTimeout(() => btn.classList.add('animate'), index * 300);
+                                    setTimeout(() => btn.classList.add('animate'), index * 100); // Faster stagger
                                 });
-                            }, 300);
-                        }, 500);
+                            }, 100);
+                        }, 200);
                     }
                 }
-                setTimeout(typeWriter, 800);
+                setTimeout(typeWriter, 300); // Faster start
             }
            
-            // Load products immediately
+            // Load products
             loadProducts();
            
             // Lazy loading for sections
             initLazySections();
            
-            // Resize handler
-            const debouncedResize = debounce(updateProductsCarousel, 250);
-            window.addEventListener('resize', debouncedResize);
+            // Remove unnecessary event listeners for mobile optimization
+            // window.removeEventListener('resize', debouncedResize); 
+            // window.removeEventListener('scroll', handleParallaxScroll);
            
-            // Parallax for desktop
-            if (window.innerWidth > 768) {
-                const handleParallaxScroll = debounce(handleParallax, 16);
-                window.addEventListener('scroll', handleParallaxScroll);
-            }
-
-            // Prevent double-tap zoom
+            // Prevent double-tap zoom (retained for good UX)
             let lastTouchEnd = 0;
             document.addEventListener('touchend', (event) => {
                 const now = new Date().getTime();
@@ -804,6 +625,15 @@
                 }
                 lastTouchEnd = now;
             }, { passive: true });
+
+             // Add event listener to scroll the carousel
+            const productsContainer = document.getElementById('productsContainer');
+            if (productsContainer) {
+                // Ensure initial scroll to show the first full card correctly
+                setTimeout(() => {
+                    productsContainer.scrollLeft = 0;
+                }, 10);
+            }
         });
 
         // Lazy Sections Observer
@@ -818,34 +648,17 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        // Stagger children
+                        // Stagger children with faster delay
                         if (entry.target.id === 'about') {
-                            staggerAnimate(entry.target.querySelectorAll('.about-card'), 250);
+                            staggerAnimate(entry.target.querySelectorAll('.about-card'), 150);
                         } else if (entry.target.id === 'contact') {
-                            staggerAnimate(entry.target.querySelectorAll('.contact-method, .shipping-info'), 250);
+                            staggerAnimate(entry.target.querySelectorAll('.contact-method, .shipping-info'), 150);
                         }
                         observer.unobserve(entry.target);
                     }
                 });
             }, observerOptions);
             lazySections.forEach(section => observer.observe(section));
-        }
-
-        let productsCurrentIndex = 0;
-        let productsCarousel = null;
-        let productCards = [];
-        let realProductCount = 0;
-        let autoSlideInterval;
-        const cardGap = 30;
-        const autoSlideDelay = 3000;
-
-        // Parallax
-        function handleParallax() {
-            const heroContent = document.querySelector('.hero-content');
-            if (!heroContent) return;
-            const scrollPos = window.scrollY;
-            heroContent.style.transform = `translateY(${scrollPos * 0.4}px)`;
-            heroContent.style.opacity = Math.max(0.3, 1 - (scrollPos / 800));
         }
 
         // Load Products with stagger
@@ -862,18 +675,19 @@
             const productsContainer = document.getElementById('productsContainer');
             if (productsContainer) {
                 productsContainer.innerHTML = '';
-                // Add originals
+                
                 products.forEach(product => {
                     const productCard = document.createElement('div');
-                    productCard.className = 'product-card stagger-item tilt-effect';
+                    // Removed 'tilt-effect' class
+                    productCard.className = 'product-card stagger-item'; 
                     productCard.innerHTML = `
                         <div class="image-container">
                             <img src="${product.imagePath}" alt="${product.name}" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/400x300/ED1C24/fff?text=IMAGE+NOT+FOUND';">
                         </div>
                         <div class="product-info">
-                            <h3 style="font-family: 'Anton', sans-serif; font-size: 1.2rem; color: var(--primary-black); margin-bottom: 5px; flex-grow: 1;">${product.name}</h3>
-                            <p style="font-size: 0.9rem;">Premium Die-Cast Model</p>
-                            <a href="https://www.instagram.com/carsmainly" target="_blank" class="btn" style="padding: 10px 20px; font-size: 0.9rem; border-radius: 20px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+                            <h3 style="font-family: 'Anton', sans-serif; font-size: 1.1rem; color: var(--primary-black); margin-bottom: 5px; flex-grow: 1;">${product.name}</h3>
+                            <p style="font-size: 0.8rem;">Premium Die-Cast Model</p>
+                            <a href="https://www.instagram.com/carsmainly" target="_blank" class="btn" style="padding: 10px 15px; font-size: 0.8rem; border-radius: 20px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); width: auto; max-width: 150px; min-height: 36px; margin: 0 auto;">
                                 <i class="fab fa-instagram"></i> Inquire / Buy
                             </a>
                         </div>
@@ -886,111 +700,14 @@
                 originalCards.forEach((card, index) => {
                     setTimeout(() => {
                         card.classList.add('animate');
-                    }, index * 150);
+                    }, index * 100); // Faster stagger
                 });
                
-                realProductCount = products.length;
-                setupInfiniteCarousel();
-                initProductsCarousel();
-                initTiltEffect();
-                // Delay auto-slide to after stagger
-                setTimeout(initAutoSlide, 1200);
+                // Removed complex infinite carousel setup and auto-slide for simpler mobile horizontal scroll
             }
         }
-
-        function setupInfiniteCarousel() {
-            const productsContainer = document.getElementById('productsContainer');
-            const { visibleCards } = calculateCardMetrics();
-            // Prepend clones (last originals)
-            for (let i = 0; i < visibleCards; i++) {
-                const lastCard = productsContainer.children[realProductCount - 1 - i].cloneNode(true);
-                productsContainer.insertBefore(lastCard, productsContainer.firstChild);
-            }
-            // Append clones (first originals)
-            for (let i = 0; i < visibleCards; i++) {
-                const firstCard = productsContainer.children[visibleCards + i].cloneNode(true);
-                productsContainer.appendChild(firstCard);
-            }
-            productsCurrentIndex = visibleCards;
-        }
-
-        function initProductsCarousel() {
-            productsCarousel = document.getElementById('productsContainer');
-            productCards = Array.from(document.querySelectorAll('.product-card'));
-            updateProductsCarousel();
-        }
-
-        function calculateCardMetrics() {
-            if (productCards.length === 0) return { totalScrollWidth: 0, visibleCards: 0 };
-            const cardWidth = productCards[0].offsetWidth;
-            let visibleCards = 3;
-            if (window.innerWidth <= 576) visibleCards = 1;
-            else if (window.innerWidth <= 992) visibleCards = 2;
-            const totalScrollWidth = cardWidth + cardGap;
-            return { totalScrollWidth, visibleCards };
-        }
-
-        function updateProductsCarousel(animate = true) {
-            if (productCards.length === 0 || !productsCarousel) return;
-            const { totalScrollWidth } = calculateCardMetrics();
-            productsCarousel.style.transition = animate ? 'transform 0.5s ease-in-out' : 'none';
-            productsCarousel.style.transform = `translateX(-${productsCurrentIndex * totalScrollWidth}px)`;
-        }
-
-        function handleNextClick() {
-            const { visibleCards } = calculateCardMetrics();
-            productsCurrentIndex += 1;
-            updateProductsCarousel(true);
-            if (productsCurrentIndex >= realProductCount + visibleCards) {
-                setTimeout(() => {
-                    productsCurrentIndex = visibleCards;
-                    updateProductsCarousel(false);
-                }, 500);
-            }
-        }
-
-        function initAutoSlide() {
-            startAutoSlide();
-            productsCarousel.addEventListener('mouseenter', stopAutoSlide);
-            productsCarousel.addEventListener('mouseleave', startAutoSlide);
-            productsCarousel.addEventListener('touchstart', stopAutoSlide, { passive: true });
-            productsCarousel.addEventListener('touchend', startAutoSlide, { passive: true });
-        }
-
-        function startAutoSlide() {
-            autoSlideInterval = setInterval(handleNextClick, autoSlideDelay);
-        }
-
-        function stopAutoSlide() {
-            if (autoSlideInterval) clearInterval(autoSlideInterval);
-            autoSlideInterval = null;
-        }
-
-        // Tilt Effect (Desktop Only)
-        function initTiltEffect() {
-            if ('ontouchstart' in window || navigator.maxTouchPoints > 0 || window.innerWidth <= 768) return;
-            const tiltElements = document.querySelectorAll('.tilt-effect');
-            tiltElements.forEach(element => {
-                element.addEventListener('mousemove', applyTilt);
-                element.addEventListener('mouseleave', resetTilt);
-            });
-        }
-
-        function applyTilt(e) {
-            const element = e.currentTarget;
-            const rect = element.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const rotateY = (x - centerX) / 10;
-            const rotateX = (centerY - y) / 10;
-            element.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
-        }
-
-        function resetTilt(e) {
-            e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
-        }
+        
+        // Removed handleNextClick, setupInfiniteCarousel, initProductsCarousel, calculateCardMetrics, updateProductsCarousel, initAutoSlide, startAutoSlide, stopAutoSlide, initTiltEffect, applyTilt, and resetTilt functions as they are desktop/complex features now removed.
     </script>
 </body>
 </html>
